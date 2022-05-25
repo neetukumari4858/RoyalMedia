@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Raleway&display=swap");
 .sidebar {
   height: 51rem;
   width: 25rem;
@@ -9,6 +10,14 @@
   gap: 1rem;
   position: sticky;
   top: 0;
+}
+.logo {
+  margin-left: 5rem;
+  margin-top: -1rem;
+  color: var(--text-color);
+  font-size: 2.7rem;
+  font-weight: bold;
+  font-family: "Handlee", cursive;
 }
 .sidebarItemsLink {
   display: flex;
