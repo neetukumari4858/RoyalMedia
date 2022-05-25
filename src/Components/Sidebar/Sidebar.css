@@ -11,7 +11,15 @@
   top: 0;
   z-index: 1;
 }
-
+.logo {
+  left: 6rem;
+  position: relative;
+  top: -0.1rem; 
+  color: var(--text-color);
+  font-size: 2.7rem;
+  font-weight: bold;
+  font-family: "Handlee", cursive;
+}
 .sidebarItemsLink {
   display: flex;
   width: 15rem;
