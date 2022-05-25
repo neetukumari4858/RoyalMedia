@@ -1,5 +1,6 @@
 import React from "react";
 import "./Navbar.css";
+import {Link} from "react-router-dom"
 function Navbar() {
   return (
     <nav className="header">
@@ -14,8 +15,7 @@ function Navbar() {
             placeholder="   Search..."
           />
         </div>
-        <button className="login-btn">Login</button>
-        {/* <Link className="nav-link" to="loginPage">Login</Link> */}
+        <Link className="login-btn nav-link" to="loginPage">Login</Link>
       </div>
     </nav>
   );

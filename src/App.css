@@ -1,18 +1,25 @@
 :root{
   
-  --dark-black-color:#131212;
-  --light-black-color:#202020;
   --red-color:#e62727;
   --gray-text-color:hsla(0,0%,100%,.2);
   --light-gray-color:rgb(131, 131, 131);
   --gray-color:gray; 
-  /* --gainboro-color:gainsboro; */
-  --blue-hover-color:#4796f0;
+  --gainboro-color:gainsboro;
   --primary-black-color:rgb(43, 41, 41);
-
+  
+  
+  /*  */
+  --blue-hover-color:#147cf3;
+  --black-color:#131212;
+  --light-black-color:#202020;
   --bg-color:#edf2f6;
   --white-color:#FFFFFF;
   --text-color:rgb(29, 155, 240);
+  --light-gray-color:rgb(92, 88, 88);
+  --gray-color:gray;
+  --blue-color:rgba(0,215,255,1);
+  --border-radius:1rem ;
+
 }
 * {
   padding: 0;
@@ -22,8 +29,8 @@
 
 html {
   font-size: 62.5%;
-  /* height: 100%;
-  width: 100%; */
+  height: 100%;
+  width: 100%;
 }
 
 @media screen and (max-width: 1000px) {
