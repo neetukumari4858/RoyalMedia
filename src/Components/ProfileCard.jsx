@@ -1,9 +1,37 @@
-import { Avatar, Button, Flex, Text, Heading, Link } from "@chakra-ui/react";
-const ProfileCard = ({onOpenProfile }) => {
+import {
+  Avatar,
+  Button,
+  Flex,
+  Text,
+  Heading,
+  Link,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { ProfileModel } from "./ProfileModel";
+// import {Link} from "react-router-dom"
+
+const ProfileCard = () => {
+  const { isOpen,onOpen,onClose } = useDisclosure();
   return (
-    <Flex flexDirection="column" bg="#FFFFFF" borderRadius="1rem" h="40rem" w="55rem" mt="2rem" justifyContent="center">
+    <Flex
+      flexDirection="column"
+      bg="#FFFFFF"
+      borderRadius="1rem"
+      h="40rem"
+      w="55rem"
+      mt="2rem"
+      justifyContent="center"
+    >
       <Flex flexDirection="column" align="center">
-        <Avatar flexDirection="column" align="center" mt="-3rem"
+        <ProfileModel
+          isOpen={isOpen}
+          onClose={onClose}
+          onOpen={onOpen}
+        />
+        <Avatar
+          flexDirection="column"
+          align="center"
+          mt="-3rem"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq_I0JFO2DxoAV3J-sI7ajtx0qW0Q5neaY_A&usqp=CAU"
           name="avatar"
           boxSize="15rem"
@@ -15,7 +43,6 @@ const ProfileCard = ({onOpenProfile }) => {
           @adarshbalika
         </Text>
         <Button
-          onClick={onOpenProfile}
           fontSize="2xl"
           variant="ghost"
           bg="#288cfb"
@@ -33,6 +60,7 @@ const ProfileCard = ({onOpenProfile }) => {
           _active={{
             bgColor: "blue.600",
           }}
+          onClick={onOpen}
         >
           Edit Profile
         </Button>

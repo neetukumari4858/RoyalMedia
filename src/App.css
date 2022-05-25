@@ -1,14 +1,5 @@
 :root{
-  
-  --red-color:#e62727;
-  --gray-text-color:hsla(0,0%,100%,.2);
-  --light-gray-color:rgb(131, 131, 131);
-  --gray-color:gray; 
-  --gainboro-color:gainsboro;
-  --primary-black-color:rgb(43, 41, 41);
-  
-  
-  /*  */
+ 
   --blue-hover-color:#147cf3;
   --black-color:#131212;
   --light-black-color:#202020;
@@ -17,7 +8,6 @@
   --text-color:rgb(29, 155, 240);
   --light-gray-color:rgb(92, 88, 88);
   --gray-color:gray;
-  --blue-color:rgba(0,215,255,1);
   --border-radius:1rem ;
 
 }

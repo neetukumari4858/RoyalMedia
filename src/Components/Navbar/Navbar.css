@@ -7,13 +7,14 @@
   align-items: center;
   background-color: var(--bg-color);
   height: 6rem;
-  z-index: 2;
+  /* z-index: 2;
   position: sticky;
-  top: 0;
+  top: 0; */
 }
 .logo {
-  margin-left: 5rem;
-  margin-top: -1rem;
+  left: 6rem;
+  position: relative;
+  top: -0.1rem; 
   color: var(--text-color);
   font-size: 2.7rem;
   font-weight: bold;
@@ -27,8 +28,9 @@
   height: 6rem;
   width: 40rem;
   border-radius: 0.2rem;
-  margin-top: -1rem;
+  margin-top: -0.5rem;
   border: none;
+  border: 1px solid black;
   background-color: var(--white-color);
 }
 .nav-link {

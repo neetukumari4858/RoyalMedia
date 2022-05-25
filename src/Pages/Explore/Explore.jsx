@@ -11,7 +11,7 @@ function Explore() {
       <Post isOpen={isOpen} onClose={onClose} />
       <Flex bgColor="#edf2f6" gap="1.3rem" justifyContent="space-between">
         <Sidebar onOpen={onOpen} />
-        <Box flexDirection="column" mt="1rem" w="60rem" bgColor="#edf2f6">
+        <Box flexDirection="column" mt="2rem" w="60rem" bgColor="#edf2f6">
           <Heading>Explore</Heading>
           <Flex gap={5} mt={3}>
             <Button

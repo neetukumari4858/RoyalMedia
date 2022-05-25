@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex, Heading,Box} from "@chakra-ui/react";
-import { UserCard, Sidebar,Post,ProfileCard} from "./../../Components/index";
+import { UserCard, Sidebar,Post,PostCard,ProfileCard} from "./../../Components/index";
 import { useDisclosure } from "@chakra-ui/hooks";
 function Profile() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -13,7 +13,8 @@ function Profile() {
           <Sidebar onOpen={onOpen} />
           <Box flexDirection="column" align="center" w="60rem" bgColor="#edf2f6">
             <ProfileCard/>
-          </Box>      
+          <PostCard/>    
+          </Box>  
           <Flex
             bgColor="gray.100"
             padding="1.5rem"

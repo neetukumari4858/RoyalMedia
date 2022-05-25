@@ -1,29 +1,41 @@
 import "./Sidebar.css";
 import { BsBookmarkFill } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
+import {MdExplore,MdLogout}  from "react-icons/md";
+// import {MdLogout ,} from "react-icons/io"
 const Sidebar = ({ onOpen }) => {
   return (
     <div className="sidebar-container">
+       <div className="nav-section">
+        <label className="logo">Royalmedia</label>
+      </div>
       <div className="sidebar">
-        <NavLink className="sidebarItemsLink" to="/">
+     
+        <Link className="sidebarItemsLink" to="/">
           <i className="fa fa-home"></i>Home
-        </NavLink>
-        <NavLink className="sidebarItemsLink" to="/explorePage">
-          <i className="material-icons">explore</i>Explore
-        </NavLink>
-        <NavLink className="sidebarItemsLink" to="/bookmarkPage">
+        </Link>
+        <Link className="sidebarItemsLink" to="/explorePage">
+          <i className="explore-icons"><MdExplore/></i>Explore
+        </Link>
+        <Link className="sidebarItemsLink" to="/bookmarkPage">
           <i className="fa">
             <BsBookmarkFill />
           </i>
           Bookmark
-        </NavLink>
-        <NavLink className="sidebarItemsLink" to="/profilePage">
+        </Link>
+        <Link className="sidebarItemsLink" to="/profilePage">
           <i className="fa">
             <CgProfile />
           </i>
           Profile
-        </NavLink>
+        </Link>
+        <Link className="sidebarItemsLink" to="/loginPage">
+          <i className="fa">
+            <MdLogout/>
+          </i>
+          Logout
+        </Link>
         <button className="create-Post-btn"  onClick={onOpen}>
           Create New Post
         </button>

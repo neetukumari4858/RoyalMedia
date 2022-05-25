@@ -11,12 +11,13 @@ function Home() {
     <>
       <Post isOpen={isOpen} onClose={onClose} />
       <Flex
+      border="1px solid black"
         bgColor="#edf2f6"
         gap="1.3rem"
         justifyContent="space-between"
       >
         <Sidebar onOpen={onOpen} />
-        <Box flexDirection="column" mt="1rem" w="60rem" bgColor="#edf2f6">
+        <Box flexDirection="column" mt="3rem" w="60rem" bgColor="#edf2f6">
           <Heading>Home</Heading>
           <Text
             bg="#FFFFFF"

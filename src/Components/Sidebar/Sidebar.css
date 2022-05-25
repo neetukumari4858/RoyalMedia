@@ -9,7 +9,9 @@
   gap: 1rem;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
+
 .sidebarItemsLink {
   display: flex;
   width: 15rem;
@@ -21,14 +23,14 @@
   font-weight: bolder;
   border-radius: 1rem;
   position: relative;
-  top: -16rem;
+  top: -13rem;
   font-size: 1.9rem;
 }
 .sidebarItemsLink:hover {
   background-color: #ffffff;
 }
 
-.material-icons,
+.explore-icons,
 .fa,
 .fas {
   display: flex;
