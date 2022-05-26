@@ -1,0 +1,68 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: var(--bg-color);
+  height: 6rem;
+  z-index: 2;
+  position: sticky;
+  top: 0;
+}
+.nav-section {
+  height: 3.7rem;
+  margin-top: 1rem;
+}
+.search-bar {
+  height: 6rem;
+  width: 40rem;
+  border-radius: 0.2rem;
+  margin-top: -1rem;
+  border: none;
+  background-color: var(--white-color);
+}
+.nav-link {
+  text-decoration: none;
+  color: var(--white-color);
+  font-weight: bolder;
+}
+.outer-search-bar-div {
+  height: 3.8rem;
+  width: 40rem;
+  margin-top: -0.5rem;
+  display: flex;
+  justify-content: center;
+  margin-right: 25rem;
+  overflow-y: hidden;
+  border-radius: 1rem;
+}
+.login-btn {
+  position: relative;
+  left: 50rem;
+  top: -3.5rem;
+  padding: 0.9rem 2.3rem;
+  background-color: var(--text-color);
+  border: none;
+  border-radius: 1rem;
+  color: var(--white-color);
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+.text-color {
+  color: var(--white-color);
+}
+@media screen and (max-width: 320px) {
+  .header {
+    width: 65rem;
+  }
+}
+@media screen and (max-width: 375px) {
+  .header {
+    width: 80rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  .header {
+    width: 90rem;
+  }
+}

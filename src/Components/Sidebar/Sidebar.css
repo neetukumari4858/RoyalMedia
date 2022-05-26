@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Raleway&display=swap");
+.sidebar {
+  height: 51rem;
+  width: 25rem;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.logo {
+  left: 6rem;
+  position: relative;
+  top: 0.8rem; 
+  color: var(--text-color);
+  font-size: 2.7rem;
+  font-weight: bold;
+  font-family: "Handlee", cursive;
+}
+.logo {
+  margin-left: 5rem;
+  margin-top: -1rem;
+  color: var(--text-color);
+  font-size: 2.7rem;
+  font-weight: bold;
+  font-family: "Handlee", cursive;
+}
+.sidebarItemsLink {
+  display: flex;
+  width: 15rem;
+  text-decoration: none;
+  padding: 1rem;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  color: var(--dark-black-color);
+  font-weight: bolder;
+  border-radius: 1rem;
+  position: relative;
+  top: -13rem;
+  font-size: 1.9rem;
+}
+.sidebarItemsLink:hover {
+  background-color: #ffffff;
+}
+
+.explore-icons,
+.fa,
+.fas {
+  display: flex;
+  margin-right: 1rem;
+  color: var(--dark-black-color);
+}
+.fa-home {
+  position: relative;
+  left: 0.1rem;
+  top: 0.1rem;
+}
+
+.create-Post-btn {
+  padding: 1.5rem 3rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  background-color: var(--text-color);
+  margin-top: -12rem;
+  margin-left: 2rem;
+  color: var(--white-color);
+  font-weight: 900;
+}
+.create-Post-btn:hover {
+  background-color: var(--blue-hover-color);
+}
+.outer-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}

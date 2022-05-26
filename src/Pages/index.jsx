@@ -1,0 +1,6 @@
+export {Home} from "./Home/Home"
+export {Explore} from "./Explore/Explore"
+export {Profile} from "./Profile/Profile"
+export {Bookmark} from "./Bookmark/Bookmark"
+export {Login} from "./Auth/Login"
+export {SignUp} from "./Auth/SignUp"
