@@ -13,9 +13,8 @@
   z-index: 1;
 }
 .logo {
-  left: 6rem;
   position: relative;
-  top: 0.8rem; 
+  top: 0.7rem; 
   color: var(--text-color);
   font-size: 2.7rem;
   font-weight: bold;
