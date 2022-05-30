@@ -8,9 +8,18 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { ProfileModel } from "./ProfileModel";
-// import {Link} from "react-router-dom"
+import {logoutUser} from "./../redux/slices/authSlice"
 
 const ProfileCard = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const logoutHandler = () => {
+    dispatch(logoutUser())
+    navigate('/')
+    // toast.success('Loggedout Successfully.')
+  }
+
   const { isOpen,onOpen,onClose } = useDisclosure();
   return (
     <Flex
@@ -28,6 +37,16 @@ const ProfileCard = () => {
           onClose={onClose}
           onOpen={onOpen}
         />
+         <Flex justifyContent="flex-end" w="100%">
+          <Tooltip label="Logout" fontSize="2xl">
+            <IconButton
+              icon={<FiLogOut />}
+              size="2xl"
+              bg="transparent"
+              onClick={logoutHandler}
+            />
+          </Tooltip>
+        </Flex>
         <Avatar
           flexDirection="column"
           align="center"

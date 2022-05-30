@@ -6,6 +6,7 @@ import { makeServer } from './server'
 import { BrowserRouter } from 'react-router-dom'
 import { ChakraProvider } from '@chakra-ui/react'
 import { Provider } from 'react-redux'
+import {store} from "./redux/app/store"
 
 // import {BrowserRouter as Routers} from "./"
 
@@ -15,12 +16,12 @@ const rootElement = document.getElementById('root')
 const root = createRoot(rootElement)
 root.render(
   <React.StrictMode>
-    <ChakraProvider>
       <Provider store={store}>
+    <ChakraProvider>
         <BrowserRouter>
           <App />
         </BrowserRouter>
-      </Provider>
     </ChakraProvider>
+      </Provider>
   </React.StrictMode>,
 )

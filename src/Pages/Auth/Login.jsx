@@ -1,33 +1,31 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import axios from "axios";
-
+import { login } from "../../redux/asyncThunks/authThunk";
 import "./Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [user, setUser] = useState({
-    email: "",
+    username: "",
     password: "",
-    checkPolicy: false,
   });
-  const loginBtnHandler = async () => {
-    const response = await axios.post("/api/auth/login", {
-      email: user.email,
-      password: user.password,
-    });
-    console.log(response, "res");
-    if (response.status === 200) {
-      localStorage.setItem("user", JSON.stringify(response.data.foundUser));
-      const token = response.data.encodedToken;
-      localStorage.setItem("token", token);
-      setUserdetail({
-        token: response.data.encodedToken,
-        user: response.data.foundUser,
-      });
-      setLogedIn(true);
-      navigate(location?.state?.from?.pathname ?? "/", { replace: true });
+  const dispatch = useDispatch();
+  const loginBtnHandler = async (e) => {
+    if (user.username && user.password) {
+      const response = await dispatch(login(user));
+      if (response?.payload.status === 200) {
+        localStorage.setItem(
+          "user",
+          JSON.stringify(response.payload.data.foundUser)
+        );
+        const token = response.payload.data.encodedToken;
+        localStorage.setItem("token", token);
+        navigate(location?.state?.from?.pathname ?? "/", { replace: true });
+      }
+    } else {
+      console.log("fill all fields");
     }
   };
 
@@ -37,26 +35,31 @@ const Login = () => {
         <form className="login-content-container">
           <h2 className="royal-heading-two">Royalmedia</h2>
           <h4 className="Login-heading-four ">Login</h4>
-          <label className="lebel-text">Email address</label>
+          <label className="lebel-text">username address</label>
           <input
+            htmlFor="username"
             className="user-input"
-            type="email"
-            placeholder="  demo@gmail.com "
-            value={user.email}
-            onChange={(event) =>
-              setUser({ ...user, email: event.target.value })
-            }
+            type="text"
+            id="username"
+            placeholder=" Enter Name "
+            value={user.username}
+            // onChange={(event) =>
+            //   setUser({ ...user, username: event.target.value })
+            // }
           />
 
-          <label className="lebel-text">Password</label>
+          <label htmlFor="passwordInput" className="lebel-text">
+            Password
+          </label>
           <input
             className="user-input"
             placeholder="  Enter Password..."
             type="password"
+            id="passwordInput"
             value={user.password}
-            onChange={(event) =>
-              setUser({ ...user, password: event.target.value })
-            }
+            // onChange={(event) =>
+            //   setUser({ ...user, password: event.target.value })
+            // }
           />
           <div className="login-grid">
             <button type="button" className="videologin-btn ">
@@ -65,7 +68,7 @@ const Login = () => {
             <button
               type="button"
               className="videologin-btn "
-              onClick={() => loginBtnHandler()}
+              onClick={(e) => loginBtnHandler(e)}
             >
               Login
             </button>

@@ -27,6 +27,7 @@
   border-radius: var(--border-radius);
   border: 1px solid var(--gray-color);
   font-size: 1.4rem;
+  color:  var(--black-color);
 }
 .create-account {
   text-align: center;
