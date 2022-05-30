@@ -43,9 +43,9 @@ const Login = () => {
             id="username"
             placeholder=" Enter Name "
             value={user.username}
-            // onChange={(event) =>
-            //   setUser({ ...user, username: event.target.value })
-            // }
+            onChange={(event) =>
+              setUser({ ...user, username: event.target.value })
+            }
           />
 
           <label htmlFor="passwordInput" className="lebel-text">
