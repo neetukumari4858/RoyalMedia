@@ -1,31 +1,40 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../redux/asyncThunks/authThunk";
+import { useLocation } from "react-router";
+import { toast } from "react-toastify";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import "./Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [inputType, setinputType] = useState("password");
   const location = useLocation();
-  const [user, setUser] = useState({
+  const [loginuser, setUser] = useState({
     username: "",
     password: "",
   });
+
+  const {username,password}=loginuser
   const dispatch = useDispatch();
-  const loginBtnHandler = async (e) => {
-    if (user.username && user.password) {
-      const response = await dispatch(login(user));
-      if (response?.payload.status === 200) {
+
+  const loginBtnHandler = async () => {
+    if (username && password) {
+      const response = await dispatch(login(loginuser));
+      console.log(response, "from login");
+      if (response?.payload?.status === 200) {
         localStorage.setItem(
           "user",
           JSON.stringify(response.payload.data.foundUser)
         );
         const token = response.payload.data.encodedToken;
         localStorage.setItem("token", token);
-        navigate(location?.state?.from?.pathname ?? "/", { replace: true });
+        navigate(location?.state?.from?.pathname || "/", { replace: true });
+        toast.success("Login Successfull !");
       }
     } else {
-      console.log("fill all fields");
+      toast.error("Fill all the fields");
     }
   };
 
@@ -42,9 +51,9 @@ const Login = () => {
             type="text"
             id="username"
             placeholder=" Enter Name "
-            value={user.username}
+            value={username}
             onChange={(event) =>
-              setUser({ ...user, username: event.target.value })
+              setUser({ ...loginuser, username: event.target.value })
             }
           />
 
@@ -54,21 +63,47 @@ const Login = () => {
           <input
             className="user-input"
             placeholder="  Enter Password..."
-            type="password"
+            type={inputType}
             id="passwordInput"
-            value={user.password}
-            // onChange={(event) =>
-            //   setUser({ ...user, password: event.target.value })
-            // }
+            value={password}
+            onChange={(event) =>
+              setUser({ ...loginuser, password: event.target.value })
+            }
+            
           />
+              <div
+              className="passwordIcon"
+              onClick={() =>
+                inputType === "text"
+                  ? setinputType("password")
+                  : setinputType("text")
+              }
+            >
+              {inputType === "text" ? (
+                <p>
+                  <AiFillEye />
+                </p>
+              ) : (
+                <p>
+                  <AiFillEyeInvisible />
+                </p>
+              )}
+            </div>
+          
           <div className="login-grid">
-            <button type="button" className="videologin-btn ">
+            <button
+              type="button"
+              className="videologin-btn "
+              onClick={()=>setUser({
+                ...loginuser,username: "Neetu", password: "neetu123"
+              })}
+            >
               Guest Login
             </button>
             <button
               type="button"
               className="videologin-btn "
-              onClick={(e) => loginBtnHandler(e)}
+              onClick={loginBtnHandler}
             >
               Login
             </button>

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import {login} from "./../asyncThunks/authThunk"
+import {login,signup} from "./../asyncThunks/authThunk"
 
 const initialState = {
   user: JSON.parse(localStorage.getItem('user')) || null,
@@ -20,10 +20,19 @@ const authSlice = createSlice({
   },
   extraReducers:{
     [login.fulfilled]: (state, action) => {
+      console.log(action)
       state.user = action.payload.data.foundUser
       state.token = action.payload.data.encodedToken
     },
     [login.rejected]: (action) => {
+      console.error(action)
+      console.log("fail")
+    },
+    [signup.fulfilled]: (state, action) => {
+      state.user = action.payload.data.createdUser
+      state.token = action.payload.data.encodedToken
+    },
+    [signup.rejected]: (action) => {
       console.error(action)
     },
   }
@@ -31,5 +40,4 @@ const authSlice = createSlice({
 })
 
 export const {logoutUser } = authSlice.actions
-
 export default authSlice.reducer

@@ -11,16 +11,17 @@ function Home() {
     <>
       <Post isOpen={isOpen} onClose={onClose} />
       <Flex
-      border="1px solid black"
-        bgColor="#edf2f6"
+      // border="1px solid black"
+        bgColor="#1A202C"
         gap="1.3rem"
+        color={"white"}
         justifyContent="space-between"
       >
         <Sidebar onOpen={onOpen} />
-        <Box flexDirection="column" mt="3rem" w="60rem" bgColor="#edf2f6">
+        <Box flexDirection="column" mt="3rem" w="60rem" bgColor="#1A202C">
           <Heading>Home</Heading>
           <Text
-            bg="#FFFFFF"
+            bg="#2D3748"
             w="100%"
             h="5rem"
             mt={4}
@@ -55,14 +56,14 @@ function Home() {
           <PostCard />
         </Box>
         <Flex
-          bgColor="gray.100"
+          bgColor="#2D3748"
           padding="1.5rem"
           gap="1rem"
           flexDirection="column"
           borderRadius="1rem"
           position="sticky"
           top="2rem"
-          w="45rem"
+          w="37rem"
           h="40rem"
           bottom="0"
         >

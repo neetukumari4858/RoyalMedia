@@ -1,7 +1,56 @@
-import { Link } from "react-router-dom";
 import "./SignUp.css";
+import React, { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { signup } from "../../redux/asyncThunks/authThunk";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const SignUp = () => {
+  const [inputType, setinputType] = useState("password");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  const [newUser, setNewUser] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+    firstName: "",
+    lastName: "",
+  });
+  const signUpHandler = async () => {
+    if (
+      !newUser.email ||
+      !newUser.password ||
+      !newUser.confirmPassword ||
+      !newUser.firstName ||
+      !newUser.lastName
+    ) {
+      toast.error("Fill all the fields");
+      return;
+    }
+    if (newUser.confirmPassword !== newUser.password) {
+      toast.error("The passwords entered do not match");
+    } else {
+      const response = await dispatch(signup(newUser));
+
+      if (response?.payload?.status === 201) {
+        localStorage.setItem(
+          "user",
+          JSON.stringify(response.payload.data.createdUser)
+        );
+        const token = response.payload.data.encodedToken;
+        localStorage.setItem("token", token);
+        navigate(location?.state?.from?.pathname || "/", { replace: true });
+        toast.success(
+          "Congratulation, your account has been successfully created."
+        );
+      } else {
+        toast.error("Signup Failed!");
+      }
+    }
+  };
   return (
     <div className="outer-Login-container">
       <div className="sign-outer-container">
@@ -12,8 +61,12 @@ const SignUp = () => {
               First Name
               <input
                 className="grid-item"
-                type="email"
+                type="text"
                 placeholder="  First Name"
+                value={newUser.firstName}
+                onChange={(e) =>
+                  setNewUser({ ...newUser, firstName: e.target.value })
+                }
               />
             </label>
 
@@ -21,32 +74,68 @@ const SignUp = () => {
               Last Name
               <input
                 className="grid-item"
-                type="email"
+                type="text"
                 placeholder="  Last Name"
+                value={newUser.lastName}
+                onChange={(e) =>
+                  setNewUser({ ...newUser, lastName: e.target.value })
+                }
               />
             </label>
           </div>
           <label className="lebel-text">Email address</label>
           <input
-            className="user-input"
+            className="user-input spacing"
             type="email"
-            placeholder="  demo@gmail.com "
+            placeholder="  neetu@gmail.com "
+            value={newUser.email}
+            onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
           />
 
           <label className="lebel-text">Password</label>
           <input
-            className="user-input"
+            className="user-input spacing"
             placeholder="  Enter Password..."
-            type="password"
+            type={inputType}
+            value={newUser.password}
+            onChange={(e) =>
+              setNewUser({ ...newUser, password: e.target.value })
+            }
           />
+             <div
+              className="passwordIcon"
+              onClick={() =>
+                inputType === "text"
+                  ? setinputType("password")
+                  : setinputType("text")
+              }
+            >
+              {inputType === "text" ? (
+                <p>
+                  <AiFillEye />
+                </p>
+              ) : (
+                <p>
+                  <AiFillEyeInvisible />
+                </p>
+              )}
+            </div>
           <label className="lebel-text">Confirm Password</label>
           <input
-            className="user-input"
+            className="user-input spacing"
             placeholder="  Enter Confirm Password..."
-            type="password"
+            type="text"
+            value={newUser.confirmPassword}
+            onChange={(e) =>
+              setNewUser({ ...newUser, confirmPassword: e.target.value })
+            }
           />
 
-          <button type="button" className="videologin-btn signUp-width-heigth ">
+          <button
+            type="button"
+            className="videologin-btn signUp-width-heigth"
+            onClick={signUpHandler}
+          >
             SignUp
           </button>
 

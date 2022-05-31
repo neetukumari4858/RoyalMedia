@@ -1,5 +1,5 @@
 .sign-outer-container {
-  height: 50rem;
+  height: 54rem;
   width: 37rem;
   margin-top: 3rem;
   display: flex;
@@ -54,11 +54,14 @@
 .grid-item {
   border: 1px solid var(--gray-color);
   font-size: 1.4rem;
-  height: 4rem;
+  height: 3.7rem;
   margin: 0.4rem 0 0 -1rem;
   border-radius: var(--border-radius);
 }
 .login-lable {
   display: flex;
   flex-direction: column;
+}
+.spacing{
+  height: 3.7rem;
 }

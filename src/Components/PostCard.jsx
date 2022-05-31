@@ -26,7 +26,7 @@ const PostCard = () => {
         w="60rem"
         mt={9}
         padding="2rem"
-        bgColor="#FFFFFF"
+        bgColor="#2D3748"
         borderRadius="1rem"
         flexDirection="column"
         gap="1rem"
@@ -154,7 +154,7 @@ const PostCard = () => {
         </Flex>
         <Flex
           gap="1rem"
-          bgColor="gray.300"
+          bgColor="#1A202C"
           padding="1rem"
           borderRadius="1rem"
           alignItems="center"
@@ -178,7 +178,7 @@ const PostCard = () => {
                   icon={<BsThreeDotsVertical />}
                   fontSize="1.8rem"
                   bg="transparent"
-                  color="black"
+                  color="white"
                 ></IconButton>
               </PopoverTrigger>
               <PopoverContent w="5xs" paddingRight="1rem">

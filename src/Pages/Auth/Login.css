@@ -100,5 +100,14 @@
   grid-template-columns: 30rem;
   grid-template-rows: 4.3rem 4.3rem;
   grid-row-gap: 1.8rem;
-  margin-top: 0.6rem;
+  margin-top: -1.6rem;
+}
+
+
+.passwordIcon {
+  color: var(--black-color);
+  position: relative;
+  top: -2.9rem;
+  left: 27rem;
+  font-size: 1.8rem;
 }
