@@ -9,7 +9,7 @@ function Explore() {
   return (
     <>
       <Post isOpen={isOpen} onClose={onClose} />
-      <Flex bgColor="#1A202C" gap="1.3rem" color="white" justifyContent="space-between">
+      <Flex bgColor="#1A202C" gap="3rem" color="white" justifyContent="space-between">
         <Sidebar onOpen={onOpen} />
         <Box flexDirection="column" mt="2rem" w="60rem" bgColor="#1A202C">
           <Heading>Explore</Heading>
@@ -67,7 +67,7 @@ function Explore() {
           borderRadius="1rem"
           position="sticky"
           top="2rem"
-          w="45rem"
+          w="38rem"
           h="40rem"
           bottom="0"
         >

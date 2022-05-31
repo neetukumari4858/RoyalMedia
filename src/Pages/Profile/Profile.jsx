@@ -14,21 +14,21 @@ function Profile() {
   return (
     <>
       <Post isOpen={isOpen} onClose={onClose} />
-      <Flex bgColor="#edf2f6" gap="1.3rem" justifyContent="space-between">
+      <Flex bgColor="#1A202C" color="white" gap="1.3rem" justifyContent="space-between">
         <Sidebar onOpen={onOpen} />
-        <Box flexDirection="column" align="center" w="60rem" bgColor="#edf2f6">
+        <Box flexDirection="column" align="center" w="60rem" bgColor="#1A202C">
           <ProfileCard />
           <PostCard />
         </Box>
         <Flex
-          bgColor="gray.100"
+          bgColor="#2D3748"
           padding="1.5rem"
           gap="1rem"
           flexDirection="column"
           borderRadius="1rem"
           position="sticky"
           top="2rem"
-          w="45rem"
+          w="37rem"
           h="40rem"
           bottom="0"
         >

@@ -6,14 +6,12 @@ import { UserCard, Sidebar, PostCard } from "./../../Components/index";
 
 function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
     <>
       <Post isOpen={isOpen} onClose={onClose} />
       <Flex
-      // border="1px solid black"
         bgColor="#1A202C"
-        gap="1.3rem"
+        gap="1rem"
         color={"white"}
         justifyContent="space-between"
       >
@@ -63,7 +61,7 @@ function Home() {
           borderRadius="1rem"
           position="sticky"
           top="2rem"
-          w="37rem"
+          w="38rem"
           h="40rem"
           bottom="0"
         >

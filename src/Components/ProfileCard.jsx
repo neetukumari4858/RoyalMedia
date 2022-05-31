@@ -33,10 +33,10 @@ const ProfileCard = () => {
   return (
     <Flex
       flexDirection="column"
-      bg="#FFFFFF"
+      bg="#2D3748"
       borderRadius="1rem"
       h="40rem"
-      w="55rem"
+      w="60rem"
       mt="2rem"
       justifyContent="center"
     >
@@ -60,7 +60,6 @@ const ProfileCard = () => {
           align="center"
           mt="-3rem"
           src={profile}
-          
           name="avatar"
           boxSize="15rem"
         />

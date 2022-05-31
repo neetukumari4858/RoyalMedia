@@ -16,7 +16,7 @@ const Login = () => {
     password: "",
   });
 
-  const {username,password}=loginuser
+  const { username, password } = loginuser;
   const dispatch = useDispatch();
 
   const loginBtnHandler = async () => {
@@ -44,7 +44,7 @@ const Login = () => {
         <form className="login-content-container">
           <h2 className="royal-heading-two">Royalmedia</h2>
           <h4 className="Login-heading-four ">Login</h4>
-          <label className="lebel-text">username address</label>
+          <label className="lebel-text">Username</label>
           <input
             htmlFor="username"
             className="user-input"
@@ -69,34 +69,37 @@ const Login = () => {
             onChange={(event) =>
               setUser({ ...loginuser, password: event.target.value })
             }
-            
           />
-              <div
-              className="passwordIcon"
-              onClick={() =>
-                inputType === "text"
-                  ? setinputType("password")
-                  : setinputType("text")
-              }
-            >
-              {inputType === "text" ? (
-                <p>
-                  <AiFillEye />
-                </p>
-              ) : (
-                <p>
-                  <AiFillEyeInvisible />
-                </p>
-              )}
-            </div>
-          
+          <div
+            className="passwordIcon"
+            onClick={() =>
+              inputType === "text"
+                ? setinputType("password")
+                : setinputType("text")
+            }
+          >
+            {inputType === "text" ? (
+              <p>
+                <AiFillEye />
+              </p>
+            ) : (
+              <p>
+                <AiFillEyeInvisible />
+              </p>
+            )}
+          </div>
+
           <div className="login-grid">
             <button
               type="button"
               className="videologin-btn "
-              onClick={()=>setUser({
-                ...loginuser,username: "Neetu", password: "neetu123"
-              })}
+              onClick={() =>
+                setUser({
+                  ...loginuser,
+                  username: "Neetu",
+                  password: "neetu123",
+                })
+              }
             >
               Guest Login
             </button>
