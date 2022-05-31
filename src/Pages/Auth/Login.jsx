@@ -22,7 +22,6 @@ const Login = () => {
   const loginBtnHandler = async () => {
     if (username && password) {
       const response = await dispatch(login(loginuser));
-      console.log(response, "from login");
       if (response?.payload?.status === 200) {
         localStorage.setItem(
           "user",

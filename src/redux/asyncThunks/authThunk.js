@@ -6,7 +6,6 @@ const login = createAsyncThunk(
   async (loginuser, { rejectWithValue }) => {
     try {
       const response = await axios.post('/api/auth/login', loginuser)
-      console.log(response)
       const data = { data: response.data, status: response.status }
       return data
     } catch (error) {
