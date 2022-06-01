@@ -26,13 +26,12 @@ const PostCard = () => {
         w="60rem"
         mt={9}
         padding="2rem"
-        bgColor="#FFFFFF"
+        bgColor="#2D3748"
         borderRadius="1rem"
         flexDirection="column"
         gap="1rem"
         justifyContent={"center"}
         align={"center"}
-        // z-index={1}
       >
         <Flex justifyContent="space-between" w="55rem" >
           <Flex gap="1rem" w="50rem">
@@ -53,7 +52,6 @@ const PostCard = () => {
               <IconButton
                 icon={<BsThreeDotsVertical />}
                 fontSize="1.8rem"
-                // bg="transparent"
                 color="black"
                 bgColor="#edf2f6"
                 borderRadius="1.5rem"
@@ -73,6 +71,7 @@ const PostCard = () => {
                     leftIcon={<FaEdit />}
                     fontSize="1.5rem"
                     bg="transparent"
+                    color="#1A202C"
                   >
                     Edit
                   </Button>
@@ -80,6 +79,8 @@ const PostCard = () => {
                     leftIcon={<FaTrash />}
                     fontSize="1.5rem"
                     bg="transparent"
+                    color="#1A202C"
+
                   >
                     Delete
                   </Button>
@@ -154,7 +155,7 @@ const PostCard = () => {
         </Flex>
         <Flex
           gap="1rem"
-          bgColor="gray.300"
+          bgColor="#1A202C"
           padding="1rem"
           borderRadius="1rem"
           alignItems="center"
@@ -163,7 +164,7 @@ const PostCard = () => {
           <Avatar
             name="avatar"
             size="md"
-            src="https://thumbs.dreamstime.com/b/software-language-programmer-avatar-software-language-programmer-avatar-vector-illustration-design-110589729.jpg"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq_I0JFO2DxoAV3J-sI7ajtx0qW0Q5neaY_A&usqp=CAU"
           />
           <Flex justifyContent="space-between" w="100%" alignItems="center">
             <Flex flexDirection="column">
@@ -178,7 +179,7 @@ const PostCard = () => {
                   icon={<BsThreeDotsVertical />}
                   fontSize="1.8rem"
                   bg="transparent"
-                  color="black"
+                  color="white"
                 ></IconButton>
               </PopoverTrigger>
               <PopoverContent w="5xs" paddingRight="1rem">
@@ -195,6 +196,7 @@ const PostCard = () => {
                       leftIcon={<FaEdit />}
                       fontSize="1.5rem"
                       bg="transparent"
+                      color="#1A202C"
                     >
                       Edit
                     </Button>
@@ -202,6 +204,7 @@ const PostCard = () => {
                       leftIcon={<FaTrash />}
                       fontSize="1.5rem"
                       bg="transparent"
+                      color="#1A202C"
                     >
                       Delete
                     </Button>

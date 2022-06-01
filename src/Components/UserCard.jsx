@@ -9,7 +9,7 @@ const UserCard = () => {
           w="30rem"
           h="8rem"
           mt={2}
-          bgColor="gray.300"
+          bgColor="#1A202C"
           borderRadius="1rem"
           align="center"
           gap={3}

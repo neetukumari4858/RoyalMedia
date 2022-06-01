@@ -14,7 +14,8 @@ import {
     return (
       <Modal isOpen={isOpen} onClose={onClose} size="xl" fontSize="2rem">
         <ModalOverlay />
-        <ModalContent maxW="40rem">
+        <ModalContent 
+            maxW="40rem">
           <ModalHeader size="xl" fontSize="2rem">
             Add Post
           </ModalHeader>

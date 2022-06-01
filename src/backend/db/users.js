@@ -8,11 +8,15 @@ import { formatDate } from "../utils/authUtils";
 export const users = [
   {
     _id: uuid(),
-    firstName: "Adarsh",
-    lastName: "Balika",
-    username: "adarshbalika",
-    password: "adarshBalika123",
-    createdAt: formatDate(),
+    firstName: "Neetu",
+    lastName: "Kumari",
+    username: "Neetu",
+    password: "neetu123",
+    bio: "I am fresher in web developement",
+    link: 'https://adarshbalika.netlify.app/',
+    profile:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq_I0JFO2DxoAV3J-sI7ajtx0qW0Q5neaY_A&usqp=CAU",
+    createdAt: 2022,
     updatedAt: formatDate(),
   },
 ];

@@ -9,9 +9,9 @@ function Explore() {
   return (
     <>
       <Post isOpen={isOpen} onClose={onClose} />
-      <Flex bgColor="#edf2f6" gap="1.3rem" justifyContent="space-between">
+      <Flex bgColor="#1A202C" gap="3rem" color="white" justifyContent="space-between">
         <Sidebar onOpen={onOpen} />
-        <Box flexDirection="column" mt="2rem" w="60rem" bgColor="#edf2f6">
+        <Box flexDirection="column" mt="2rem" w="60rem" bgColor="#1A202C">
           <Heading>Explore</Heading>
           <Flex gap={5} mt={3}>
             <Button
@@ -60,14 +60,14 @@ function Explore() {
           <PostCard />
         </Box>
         <Flex
-          bgColor="gray.100"
+          bgColor="#2D3748"
           padding="1.5rem"
           gap="1rem"
           flexDirection="column"
           borderRadius="1rem"
           position="sticky"
           top="2rem"
-          w="45rem"
+          w="38rem"
           h="40rem"
           bottom="0"
         >

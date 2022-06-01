@@ -6,19 +6,37 @@ import {
   Heading,
   Link,
   useDisclosure,
+  IconButton
 } from "@chakra-ui/react";
+
+import { useNavigate } from "react-router-dom";
 import { ProfileModel } from "./ProfileModel";
-// import {Link} from "react-router-dom"
+import {logoutUser} from "./../redux/slices/authSlice"
+import { useDispatch, useSelector } from "react-redux";
+import {FiLogOut} from "react-icons/fi"
+import { toast } from "react-toastify";
 
 const ProfileCard = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const {user,token}=useSelector((state)=>state.auth)
+  const {firstName, lastName,username, bio, link, profile} =user
+
+  const logoutHandler = () => {
+    dispatch(logoutUser())
+    navigate('/')
+    toast.success('Loggedout Successfully.')
+  }
+
   const { isOpen,onOpen,onClose } = useDisclosure();
   return (
     <Flex
       flexDirection="column"
-      bg="#FFFFFF"
+      bg="#2D3748"
       borderRadius="1rem"
       h="40rem"
-      w="55rem"
+      w="60rem"
       mt="2rem"
       justifyContent="center"
     >
@@ -28,19 +46,28 @@ const ProfileCard = () => {
           onClose={onClose}
           onOpen={onOpen}
         />
+         <Flex justifyContent="flex-end" w="100%">
+            <IconButton
+              icon={<FiLogOut size="2.5rem"  />}
+              size="4rem"
+              mr="4rem"
+              bg="transparent"
+              onClick={logoutHandler}
+            />
+        </Flex>
         <Avatar
           flexDirection="column"
           align="center"
           mt="-3rem"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq_I0JFO2DxoAV3J-sI7ajtx0qW0Q5neaY_A&usqp=CAU"
+          src={profile}
           name="avatar"
           boxSize="15rem"
         />
       </Flex>
       <Flex flexDirection="column" align="center">
-        <Heading>Adarsh Balika</Heading>
+        <Heading>{token ? `${firstName} ${lastName}` : null}</Heading>
         <Text fontSize="xl" fontWeight="bold">
-          @adarshbalika
+        {token ? `@${username}` : null}
         </Text>
         <Button
           fontSize="2xl"
@@ -65,7 +92,7 @@ const ProfileCard = () => {
           Edit Profile
         </Button>
         <Text mt="1rem" fontSize="1.5rem">
-          I am fresher in developement
+          {bio}
         </Text>
         <Link
           fontSize="1.5rem"
@@ -73,7 +100,7 @@ const ProfileCard = () => {
           isExternal
           color="blue.500"
         >
-          https://adarshbalika.netlify.app/
+         {link}
         </Link>
         <Flex gap="6rem">
           <Flex flexDirection="column">
