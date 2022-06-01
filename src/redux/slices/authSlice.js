@@ -20,10 +20,12 @@ const authSlice = createSlice({
   },
   extraReducers:{
     [login.fulfilled]: (state, action) => {
+      console.log(action,"action");
       state.user = action.payload.data.foundUser
       state.token = action.payload.data.encodedToken
     },
     [login.rejected]: (action) => {
+      console.error(action)
     },
     [signup.fulfilled]: (state, action) => {
       state.user = action.payload.data.createdUser
