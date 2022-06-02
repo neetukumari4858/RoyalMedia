@@ -14,12 +14,25 @@ import {
   PopoverCloseButton,
   InputGroup,
   Input,
-  InputRightElement
+  InputRightElement,
 } from "@chakra-ui/react";
 import { BsThreeDotsVertical, BsBookmark } from "react-icons/bs";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { BiHeart } from "react-icons/bi";
-const PostCard = () => {
+
+const PostCard = ({ post}) => {
+  const {
+    _id,
+    comments,
+    firstName,
+    lastName,
+    username,
+    profile,
+    likes,
+    content,
+    createdAt,
+  } = post;
+
   return (
     <>
       <Flex
@@ -32,19 +45,21 @@ const PostCard = () => {
         gap="1rem"
         justifyContent={"center"}
         align={"center"}
+        key={_id}
       >
-        <Flex justifyContent="space-between" w="55rem" >
+        <Flex justifyContent="space-between" w="55rem">
           <Flex gap="1rem" w="50rem">
             <Avatar
               name="avatar"
               size="xl"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq_I0JFO2DxoAV3J-sI7ajtx0qW0Q5neaY_A&usqp=CAU"
+              src={profile}
             />
             <Heading>
-              Neetu Kumari
+              {`${firstName} ${lastName}`}
               <Text fontSize="xl" color="gray.500">
-                @neetuKumari
+                {`@${username}`}
               </Text>
+              <Text fontSize="md">{createdAt}</Text>
             </Heading>
           </Flex>
           <Popover>
@@ -80,7 +95,6 @@ const PostCard = () => {
                     fontSize="1.5rem"
                     bg="transparent"
                     color="#1A202C"
-
                   >
                     Delete
                   </Button>
@@ -89,9 +103,9 @@ const PostCard = () => {
             </PopoverContent>
           </Popover>
         </Flex>
-        <Box gap="2rem"  w="55rem" >
+        <Box gap="2rem" w="55rem">
           <Text fontSize="1.6rem">
-          The first rule of social media is that everything changes all the time. ...
+            {content}
           </Text>
           <Flex gap="3rem">
             <IconButton
@@ -106,6 +120,7 @@ const PostCard = () => {
                 borderColor: "transparent",
               }}
             />
+            <Text>{likes.likeCount}</Text>
             <IconButton
               icon={<BsBookmark />}
               fontSize="1.8rem"
@@ -120,11 +135,11 @@ const PostCard = () => {
             />
           </Flex>
         </Box>
-        <Flex gap="1rem"  w="55rem">
+        <Flex gap="1rem" w="55rem">
           <Avatar
             name="avatar"
             size="md"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq_I0JFO2DxoAV3J-sI7ajtx0qW0Q5neaY_A&usqp=CAU"
+            src={profile}
           />
           <InputGroup>
             <Input
@@ -138,14 +153,14 @@ const PostCard = () => {
                 variant="ghost"
                 fontSize="1.5rem"
                 _hover={{
-                  bgColor: 'transparent',
+                  bgColor: "transparent",
                 }}
                 _focus={{
-                  borderColor: 'transparent',
-                  bgColor: 'transparent',
+                  borderColor: "transparent",
+                  bgColor: "transparent",
                 }}
                 _active={{
-                  bgColor: 'transparent',
+                  bgColor: "transparent",
                 }}
               >
                 Post
@@ -153,68 +168,81 @@ const PostCard = () => {
             </InputRightElement>
           </InputGroup>
         </Flex>
-        <Flex
-          gap="1rem"
-          bgColor="#1A202C"
-          padding="1rem"
-          borderRadius="1rem"
-          alignItems="center"
-          w="55rem"
-        >
-          <Avatar
-            name="avatar"
-            size="md"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq_I0JFO2DxoAV3J-sI7ajtx0qW0Q5neaY_A&usqp=CAU"
-          />
-          <Flex justifyContent="space-between" w="100%" alignItems="center">
-            <Flex flexDirection="column">
-              <Heading as="h5" size="md">
-                Neetu Kumari
-              </Heading>
-              <Text>This is comment.</Text>
-            </Flex>
-            <Popover>
-              <PopoverTrigger>
-                <IconButton
-                  icon={<BsThreeDotsVertical />}
-                  fontSize="1.8rem"
-                  bg="transparent"
-                  color="white"
-                ></IconButton>
-              </PopoverTrigger>
-              <PopoverContent w="5xs" paddingRight="1rem">
-                <PopoverCloseButton />
-                <PopoverArrow />
-                <PopoverBody>
+        {comments?.length > 0 
+          ? comments.map(
+              ({ _id, commentData, firstName, lastName, profile }) => {
+                return (
                   <Flex
-                    flexDirection="column"
-                    justifyContent="flexStart"
-                    gap="0.2rem"
+                    gap="1rem"
+                    bgColor="#1A202C"
                     padding="1rem"
+                    borderRadius="1rem"
+                    alignItems="center"
+                    w="55rem"
+                    key={_id}
                   >
-                    <Button
-                      leftIcon={<FaEdit />}
-                      fontSize="1.5rem"
-                      bg="transparent"
-                      color="#1A202C"
+                    <Avatar
+                      name="avatar"
+                      size="md"
+                      src={profile}
+                    />
+                    <Flex
+                      justifyContent="space-between"
+                      w="100%"
+                      alignItems="center"
                     >
-                      Edit
-                    </Button>
-                    <Button
-                      leftIcon={<FaTrash />}
-                      fontSize="1.5rem"
-                      bg="transparent"
-                      color="#1A202C"
-                    >
-                      Delete
-                    </Button>
+                      <Flex flexDirection="column">
+                        <Heading as="h5" size="md">
+                        {`${firstName} ${lastName}`}
+                        </Heading>
+                        <Text fontSize="md">{`${createdAt}`}</Text>
+                        <Text>{commentData}</Text>
+                      </Flex>
+                      <Popover>
+                        <PopoverTrigger>
+                          <IconButton
+                            icon={<BsThreeDotsVertical />}
+                            fontSize="1.8rem"
+                            bg="transparent"
+                            color="white"
+                          ></IconButton>
+                        </PopoverTrigger>
+                        <PopoverContent w="5xs" paddingRight="1rem">
+                          <PopoverCloseButton />
+                          <PopoverArrow />
+                          <PopoverBody>
+                            <Flex
+                              flexDirection="column"
+                              justifyContent="flexStart"
+                              gap="0.2rem"
+                              padding="1rem"
+                            >
+                              <Button
+                                leftIcon={<FaEdit />}
+                                fontSize="1.5rem"
+                                bg="transparent"
+                                color="#1A202C"
+                              >
+                                Edit
+                              </Button>
+                              <Button
+                                leftIcon={<FaTrash />}
+                                fontSize="1.5rem"
+                                bg="transparent"
+                                color="#1A202C"
+                              >
+                                Delete
+                              </Button>
+                            </Flex>
+                          </PopoverBody>
+                        </PopoverContent>
+                      </Popover>
+                    </Flex>
                   </Flex>
-                </PopoverBody>
-              </PopoverContent>
-            </Popover>
-          </Flex>
-        </Flex>
-
+                );
+              }
+            )
+          : null}
       </Flex>
     </>
   );

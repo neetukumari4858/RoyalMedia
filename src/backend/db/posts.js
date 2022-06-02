@@ -10,27 +10,175 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "Success is not Final,Failure is not fatal it is the courage to continue the count “Nothing is impossible. The word itself says ‘I’m possible!'”",
     likes: {
-      likeCount: 0,
+      likeCount: 3,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "adarshbalika",
-    createdAt: formatDate(),
+    firstName: 'Neetu',
+    lastName: 'Kumari',
+    username: 'Neetu',
+    createdAt: 2020,
     updatedAt: formatDate(),
+    profile:
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRODPqk7Q74WjEwsgk_HqwvLnrUrWDc0txOS4Xm7qrDkQbRLBSR306nPO9UUf-cZTlArKc&usqp=CAU',
+  comments: [
+    {
+      _id: uuid(),
+      firstName: 'Elden',
+      lastName: 'Driss',
+      username: 'Elden',
+      createdAt: 2020,
+      updatedAt: formatDate(),
+      profile:
+      "https://images.pexels.com/photos/1619697/pexels-photo-1619697.jpeg?cs=srgb&dl=pexels-victoria-borodinova-1619697.jpg&fm=jpg",
+      commentData: 'Do hard work do not think about fruit.',
+      createdAt: 2020,
+      updatedAt: formatDate(),
+    },
+  ],
   },
+
   {
     _id: uuid(),
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "Keep your face always toward the sunshine, and shadows will fall behind you. ",
     likes: {
-      likeCount: 0,
+      likeCount: 2,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "shubhamsoni",
-    createdAt: formatDate(),
+    firstName: 'Elden',
+    lastName: 'Driss',
+    username: 'Elden',
+    createdAt: 2019,
     updatedAt: formatDate(),
+    profile:
+    "https://png.pngitem.com/pimgs/s/570-5706525_tiffanie-circle-headshot-2018-blond-hd-png-download.png",
+    commentData: 'There is nothing impossible to they who will try.',
+  comments: [
+    {
+      _id: uuid(),
+      firstName: 'Neetu',
+      lastName: 'Kumari',
+      username: 'Neetu',
+      createdAt: 2019,
+      updatedAt: formatDate(),
+      profile:
+      "https://thumbs.dreamstime.com/z/cute-young-boy-smiling-21381704.jpg",
+      commentData: 'There is nothing impossible to they who will try.',
+      createdAt: 2019,
+      updatedAt: formatDate(),
+    },
+  ],
   },
+
+  {
+    _id: uuid(),
+    content:
+      "Life has got all those twists and turns. You’ve got to hold on tight and off you go.",
+    likes: {
+      likeCount: 2,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName: 'Charles',
+    lastName: 'Linda',
+    username: 'Charles',
+    createdAt: 2018,
+    updatedAt: formatDate(),
+    profile:
+    "https://images.pexels.com/photos/1619697/pexels-photo-1619697.jpeg?cs=srgb&dl=pexels-victoria-borodinova-1619697.jpg&fm=jpg",
+    commentData: 'Greate things take time.',
+  comments: [
+    {
+      _id: uuid(),
+      firstName: 'Jopesh',
+      lastName: 'Thomas',
+      username: 'Jopesh',
+      createdAt: 2018,
+      updatedAt: formatDate(),
+      profile:
+      'https://png.pngitem.com/pimgs/s/570-5706525_tiffanie-circle-headshot-2018-blond-hd-png-download.png',
+      createdAt: 2018,
+      updatedAt: formatDate(),
+    },
+  ],
+  },
+
+  {
+    _id: uuid(),
+    content:
+      "Do not allow people to dim your shine because they are blinded. Tell them to put some sunglasses on",
+    likes: {
+      likeCount: 2,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName: 'Jopesh',
+    lastName: 'Thomas',
+    username: 'Jopesh',
+    createdAt: 2018,
+    updatedAt: formatDate(),
+    profile:
+    "https://www.kindpng.com/picc/m/168-1684606_circle-headshot-girl-hd-png-download.png",
+    commentData: 'You are never too old to set another goal or to dream a new dream',
+  comments: [
+    {
+      _id: uuid(),
+      firstName: 'John',
+      lastName: 'Devin',
+      username: 'Johen',
+      createdAt: 2018,
+      updatedAt: formatDate(),
+      profile:
+      "https://images.pexels.com/photos/1619697/pexels-photo-1619697.jpeg?cs=srgb&dl=pexels-victoria-borodinova-1619697.jpg&fm=jpg",
+
+      commentData: 'You are never too old to set another goal or to dream a new dream',
+      createdAt: 2018,
+      updatedAt: formatDate(),
+    },
+  ],
+  },
+
+  {
+    _id: uuid(),
+    content:
+      "Not having the best situation, but seeing the best in your situation is the key to happiness.",
+    likes: {
+      likeCount: 2,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName: 'John',
+    lastName: 'Devin',
+    username: 'John',
+    createdAt: 2018,  
+    updatedAt: formatDate(),
+    profile:
+    "https://thumbs.dreamstime.com/z/cute-young-boy-smiling-21381704.jpg",
+    commentData: 'The bad news is time flies. The good news is you’re the pilot.',
+  comments: [
+    {
+      _id: uuid(),
+      firstName: 'Charles',
+      lastName: 'Linda',
+      username: 'Charles',
+      createdAt: 2018,
+      updatedAt: formatDate(),
+      profile:
+      "https://www.kindpng.com/picc/m/168-1684606_circle-headshot-girl-hd-png-download.png",
+      commentData: 'The bad news is time flies. The good news is you’re the pilot.',
+      createdAt: 2018,
+      updatedAt: formatDate(),
+    },
+  ],
+  },
+
+
+ 
+ 
+
 ];
+

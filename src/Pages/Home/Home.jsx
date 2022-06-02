@@ -3,9 +3,21 @@ import { AiFillPlusCircle } from "react-icons/ai";
 import { Flex, Heading, Button, Text, Box } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { UserCard, Sidebar, PostCard } from "./../../Components/index";
+import { useDispatch, useSelector } from 'react-redux'
+import {useEffect} from "react"
+import {getPost} from "./../../redux/asyncThunks/postThunk"
 
 function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const dispatch = useDispatch();
+  const { posts, status } = useSelector((state) => state.post);
+  
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(getPost());
+    }
+  }, [dispatch,status, posts]);
+
   return (
     <>
       <Post isOpen={isOpen} onClose={onClose} />
@@ -45,13 +57,21 @@ function Home() {
               }}
             />
             <Text color="gray.400" ml={20} mt={-9} fontSize="1.3rem">
-              {" "}
               Write something interesting...
             </Text>
           </Text>
-          <PostCard />
-          <PostCard />
-          <PostCard />
+          {posts?.length > 0 ? (
+            posts.map((post) => {
+              return (
+                <PostCard
+                  key={post.id}
+                  post={post}
+                />
+              );
+            })
+          ) : (
+            <Heading color="gray.600">Nothing to Home</Heading>
+          )}
         </Box>
         <Flex
           bgColor="#2D3748"

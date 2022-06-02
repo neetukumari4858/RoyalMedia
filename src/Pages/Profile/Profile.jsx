@@ -1,24 +1,23 @@
 import React from "react";
 import { Flex, Heading, Box } from "@chakra-ui/react";
-import {
-  UserCard,
-  Sidebar,
-  Post,
-  PostCard,
-  ProfileCard,
-} from "./../../Components/index";
+import { UserCard, Sidebar, Post, ProfileCard } from "./../../Components/index";
 import { useDisclosure } from "@chakra-ui/hooks";
+
 function Profile() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
       <Post isOpen={isOpen} onClose={onClose} />
-      <Flex bgColor="#1A202C" color="white" gap="1.3rem" justifyContent="space-between">
+      <Flex
+        bgColor="#1A202C"
+        color="white"
+        gap="1.3rem"
+        justifyContent="space-between"
+      >
         <Sidebar onOpen={onOpen} />
         <Box flexDirection="column" align="center" w="60rem" bgColor="#1A202C">
           <ProfileCard />
-          <PostCard />
         </Box>
         <Flex
           bgColor="#2D3748"

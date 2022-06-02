@@ -3,9 +3,20 @@ import { Post } from "./../../Components/Post";
 import { Flex, Heading, Button,Box } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { UserCard, Sidebar, PostCard } from "./../../Components/index";
+import { useDispatch, useSelector } from 'react-redux'
+import {useEffect} from "react"
+import {getPost} from "./../../redux/asyncThunks/postThunk"
+
 
 function Explore() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const dispatch = useDispatch();
+  const { posts, status } = useSelector((state) => state.post);
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(getPost());
+    }
+  }, [dispatch,status, posts]);
   return (
     <>
       <Post isOpen={isOpen} onClose={onClose} />
@@ -55,9 +66,18 @@ function Explore() {
               Latest
             </Button>
           </Flex>
-          <PostCard />
-          <PostCard />
-          <PostCard />
+          {posts?.length > 0 ? (
+            posts.map((post) => {
+              return (
+                <PostCard
+                  key={post.id}
+                  post={post}
+                />
+              );
+            })
+          ) : (
+            <Heading color="gray.600">Nothing to Explore</Heading>
+          )}
         </Box>
         <Flex
           bgColor="#2D3748"
