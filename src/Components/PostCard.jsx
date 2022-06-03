@@ -16,11 +16,21 @@ import {
   Input,
   InputRightElement,
 } from "@chakra-ui/react";
-import { BsThreeDotsVertical, BsBookmark } from "react-icons/bs";
-import { FaEdit, FaTrash } from "react-icons/fa";
-import { BiHeart } from "react-icons/bi";
 
-const PostCard = ({ post}) => {
+import {
+  BsThreeDotsVertical,
+  BsBookmark,
+  BsBookmarkFill,
+} from "react-icons/bs";
+import { FaEdit, FaTrash, FaHeart } from "react-icons/fa";
+import { BiHeart } from "react-icons/bi";
+import { likePost, dislikePost } from "../redux/asyncThunks/postThunk";
+import { useDispatch, useSelector } from "react-redux";
+import { addBookmark, removeBookmark } from "../redux/asyncThunks/authThunk";
+
+const PostCard = ({ post }) => {
+  const dispatch = useDispatch();
+  const { token, bookmarks } = useSelector((state) => state.auth);
   const {
     _id,
     comments,
@@ -32,6 +42,26 @@ const PostCard = ({ post}) => {
     content,
     createdAt,
   } = post;
+  const isLike = post?.likes.likedBy?.find((likedUser) => likedUser);
+
+  const isbookmark = bookmarks.some(
+    (bookmarkedPost) => bookmarkedPost._id === _id
+  );
+  const likePostHandler = () => {
+    dispatch(likePost({ _id, token }));
+  };
+
+  const dislikePostHandler = () => {
+    dispatch(dislikePost({ _id, token }));
+  };
+
+  const addBookmarkHandler = () => {
+    if (isbookmark) {
+      dispatch(removeBookmark({ _id, token }));
+    } else {
+      dispatch(addBookmark({ _id, token }));
+    }
+  };
 
   return (
     <>
@@ -49,11 +79,7 @@ const PostCard = ({ post}) => {
       >
         <Flex justifyContent="space-between" w="55rem">
           <Flex gap="1rem" w="50rem">
-            <Avatar
-              name="avatar"
-              size="xl"
-              src={profile}
-            />
+            <Avatar name="avatar" size="xl" src={profile} />
             <Heading>
               {`${firstName} ${lastName}`}
               <Text fontSize="xl" color="gray.500">
@@ -104,25 +130,31 @@ const PostCard = ({ post}) => {
           </Popover>
         </Flex>
         <Box gap="2rem" w="55rem">
-          <Text fontSize="1.6rem">
-            {content}
-          </Text>
+          <Text fontSize="1.6rem">{content}</Text>
           <Flex gap="3rem">
             <IconButton
-              icon={<BiHeart />}
+              icon={
+                !isLike ? (
+                  <BiHeart color="white" onClick={likePostHandler} />
+                ) : (
+                  <FaHeart color="#E53E3E" onClick={dislikePostHandler} />
+                )
+              }
               fontSize="1.8rem"
-              bg="transparent"
+              bg="none"
+              // color="white"
               borderRadius="50%"
               _hover={{
                 bgColor: "gray.200",
+                color: "black",
               }}
               _focus={{
                 borderColor: "transparent",
               }}
             />
-            <Text>{likes.likeCount}</Text>
+            <Text fontSize="1.8rem">{likes.likeCount} Likes</Text>
             <IconButton
-              icon={<BsBookmark />}
+              icon={isbookmark ? <BsBookmarkFill /> : <BsBookmark />}
               fontSize="1.8rem"
               bg="transparent"
               borderRadius="50%"
@@ -132,15 +164,15 @@ const PostCard = ({ post}) => {
               _focus={{
                 borderColor: "transparent",
               }}
+              onClick={addBookmarkHandler}
             />
+            <Text fontSize="1.8rem" ml="-2.8rem">
+              Bookmark
+            </Text>
           </Flex>
         </Box>
         <Flex gap="1rem" w="55rem">
-          <Avatar
-            name="avatar"
-            size="md"
-            src={profile}
-          />
+          <Avatar name="avatar" size="md" src={profile} />
           <InputGroup>
             <Input
               borderColor="gray.400"
@@ -168,7 +200,7 @@ const PostCard = ({ post}) => {
             </InputRightElement>
           </InputGroup>
         </Flex>
-        {comments?.length > 0 
+        {comments?.length > 0
           ? comments.map(
               ({ _id, commentData, firstName, lastName, profile }) => {
                 return (
@@ -181,11 +213,7 @@ const PostCard = ({ post}) => {
                     w="55rem"
                     key={_id}
                   >
-                    <Avatar
-                      name="avatar"
-                      size="md"
-                      src={profile}
-                    />
+                    <Avatar name="avatar" size="md" src={profile} />
                     <Flex
                       justifyContent="space-between"
                       w="100%"
@@ -193,7 +221,7 @@ const PostCard = ({ post}) => {
                     >
                       <Flex flexDirection="column">
                         <Heading as="h5" size="md">
-                        {`${firstName} ${lastName}`}
+                          {`${firstName} ${lastName}`}
                         </Heading>
                         <Text fontSize="md">{`${createdAt}`}</Text>
                         <Text>{commentData}</Text>

@@ -1,7 +1,7 @@
 import "./SignUp.css";
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { signup } from "../../redux/asyncThunks/authThunk";
+import {signup} from "../../redux/asyncThunks/index"
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";

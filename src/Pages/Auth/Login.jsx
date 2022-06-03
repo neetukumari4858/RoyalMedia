@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../../redux/asyncThunks/authThunk";
+import {login} from "../../redux/asyncThunks/index"
 import { useLocation } from "react-router";
 import { toast } from "react-toastify";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";

@@ -1,22 +1,22 @@
-import { Post } from "./../../Components/Post";
+
+import { useEffect } from "react";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { Flex, Heading, Button, Text, Box } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
-import { UserCard, Sidebar, PostCard } from "./../../Components/index";
-import { useDispatch, useSelector } from 'react-redux'
-import {useEffect} from "react"
-import {getPost} from "./../../redux/asyncThunks/postThunk"
+import { UserCard, Sidebar, PostCard,Post} from "./../../Components/index";
+import { useDispatch, useSelector } from "react-redux";
+import { getPost } from "../../redux/asyncThunks/index"
 
 function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const { posts, status } = useSelector((state) => state.post);
-  
+
   useEffect(() => {
     if (status === "idle") {
       dispatch(getPost());
     }
-  }, [dispatch,status, posts]);
+  }, [dispatch, status, posts]);
 
   return (
     <>
@@ -28,7 +28,7 @@ function Home() {
         justifyContent="space-between"
       >
         <Sidebar onOpen={onOpen} />
-        <Box flexDirection="column" mt="3rem" w="60rem" bgColor="#1A202C">
+        <Box flexDirection="column" w="60rem" bgColor="#1A202C">
           <Heading>Home</Heading>
           <Text
             bg="#2D3748"
@@ -62,12 +62,7 @@ function Home() {
           </Text>
           {posts?.length > 0 ? (
             posts.map((post) => {
-              return (
-                <PostCard
-                  key={post.id}
-                  post={post}
-                />
-              );
+              return <PostCard key={post.id} post={post} />;
             })
           ) : (
             <Heading color="gray.600">Nothing to Home</Heading>
@@ -88,8 +83,6 @@ function Home() {
           <Heading as="h4" size="xl" w="30rem" borderBottom="1px">
             Who to follow
           </Heading>
-          <UserCard />
-          <UserCard />
           <UserCard />
         </Flex>
       </Flex>
