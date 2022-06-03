@@ -26,7 +26,6 @@ const authSlice = createSlice({
 
   extraReducers: {
     [login.fulfilled]: (state, action) => {
-      console.log(action, 'action')
       state.user = action.payload.data.foundUser
       state.token = action.payload.data.encodedToken
     },
@@ -41,7 +40,6 @@ const authSlice = createSlice({
       console.error(action)
     },
     [addBookmark.fulfilled]: (state, action) => {
-      console.log(action, 'action')
       state.bookmarks = action.payload.data.bookmarks
     },
     [addBookmark.rejected]: (action) => {

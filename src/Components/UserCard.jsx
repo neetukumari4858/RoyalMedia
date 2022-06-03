@@ -16,7 +16,7 @@ const UserCard = () => {
   );
   return (
     <>
-      {allusers.map((eachauser) => {
+      {allusers.map((eachauser,index) => {
         return (
           <Flex
             w="30rem"
@@ -27,6 +27,7 @@ const UserCard = () => {
             align="center"
             gap={3}
             box-sizing=" border-box"
+            key={index}
           >
             <Avatar
               size="lg"
