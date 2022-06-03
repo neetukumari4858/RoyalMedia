@@ -61,9 +61,9 @@ export const users = [
   },
   {
     _id: uuid(),
-    firstName: 'Anil',
-    lastName: 'Kumar',
-    username: 'Anil',
+    firstName: 'Anurag',
+    lastName: 'Jain  ',
+    username: 'Anurag',
     password: 'Charless123',
     bio: 'I am fresher in web developement',
     link: 'https://adarshbalika.netlify.app/',
