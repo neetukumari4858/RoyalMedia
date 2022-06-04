@@ -30,12 +30,6 @@ const Sidebar = ({ onOpen }) => {
           </i>
           Profile
         </Link>
-        {/* <Link className="sidebarItemsLink" to="/loginPage">
-          <i className="fa">
-            <MdLogout/>
-          </i>
-          Logout
-        </Link> */}
         <button className="create-Post-btn"  onClick={onOpen}>
           Create New Post
         </button>
