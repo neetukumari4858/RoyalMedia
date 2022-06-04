@@ -1,15 +1,29 @@
 import React from "react";
-import { Post } from "./../../Components/Post";
-import { Flex, Heading, Button,Box } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { Flex, Heading, Button, Box } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
-import { UserCard, Sidebar, PostCard } from "./../../Components/index";
+import { UserCard, Sidebar, PostCard,Post  } from "./../../Components/index";
+import { useDispatch, useSelector } from "react-redux";
+import { getPost } from "../../redux/asyncThunks/index"
 
 function Explore() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const dispatch = useDispatch();
+  const { posts, status } = useSelector((state) => state.post);
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(getPost());
+    }
+  }, [dispatch, status, posts]);
   return (
     <>
       <Post isOpen={isOpen} onClose={onClose} />
-      <Flex bgColor="#1A202C" gap="3rem" color="white" justifyContent="space-between">
+      <Flex
+        bgColor="#1A202C"
+        gap="3rem"
+        color="white"
+        justifyContent="space-between"
+      >
         <Sidebar onOpen={onOpen} />
         <Box flexDirection="column" mt="2rem" w="60rem" bgColor="#1A202C">
           <Heading>Explore</Heading>
@@ -55,9 +69,13 @@ function Explore() {
               Latest
             </Button>
           </Flex>
-          <PostCard />
-          <PostCard />
-          <PostCard />
+          {posts?.length > 0 ? (
+            posts.map((post) => {
+              return <PostCard key={post.id} post={post} />;
+            })
+          ) : (
+            <Heading color="gray.600">Nothing to Explore</Heading>
+          )}
         </Box>
         <Flex
           bgColor="#2D3748"
@@ -74,8 +92,6 @@ function Explore() {
           <Heading as="h4" size="xl" w="30rem" borderBottom="1px">
             Who to follow
           </Heading>
-          <UserCard />
-          <UserCard />
           <UserCard />
         </Flex>
       </Flex>

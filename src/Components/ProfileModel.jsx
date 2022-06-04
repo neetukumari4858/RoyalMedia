@@ -1,7 +1,5 @@
 import {
   Flex,
-  // Text,
-  // Heading,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -14,14 +12,16 @@ import {
   Center,
   Box,
   Textarea,
-  
   FormLabel,
   Input,
-  InputRightElement,
   InputGroup,
 } from "@chakra-ui/react";
 import { AiFillCamera } from "react-icons/ai";
+import { useSelector } from "react-redux";
 const ProfileModel = ({ isOpen, onOpen, onClose }) => {
+  const { user } = useSelector((store) => store.auth);
+  const { profile, firstName, lastName, bio } = user;
+
   return (
     <Modal onClose={onClose} isOpen={isOpen} onOpen={onOpen}>
       <ModalOverlay />
@@ -32,12 +32,8 @@ const ProfileModel = ({ isOpen, onOpen, onClose }) => {
         <ModalCloseButton />
         <ModalBody h="10rem">
           <Center position="relative">
-            <Avatar
-              name="avatar"
-              size="2xl"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq_I0JFO2DxoAV3J-sI7ajtx0qW0Q5neaY_A&usqp=CAU"
-            />
-            <Box position="absolute" bottom="-2" right="17rem" >
+            <Avatar name="avatar" size="2xl" src={profile} />
+            <Box position="absolute" bottom="-2" right="17rem">
               <FormLabel
                 cursor="pointer"
                 borderRadius="full"
@@ -52,37 +48,14 @@ const ProfileModel = ({ isOpen, onOpen, onClose }) => {
           <InputGroup>
             <Flex flexDirection="column">
               <FormLabel fontSize="2xl" w="45rem" htmlFor="userName">
-                Name
+                {`${firstName} ${lastName}`}
               </FormLabel>
-              <Input
-                id="userName"
-                borderColor="gray.400"
-                placeholder="Write you name"
-                fontSize="1.5rem"
-                size="lg"
-                w="42rem"
-              />
-              {/* <InputRightElement mr="1rem">
-                <Button
-                  variant="ghost"
-                  fontSize="1.5rem"
-                  _hover={{
-                    bgColor: "blue.500",
-                  }}
-                  _focus={{
-                    bgColor: "none",
-                  }}
-                  _active={{
-                    bgColor: "blue.600",
-                  }}
-                ></Button>
-              </InputRightElement> */}
+
               <FormLabel fontSize="2xl" htmlFor="bio">
                 Bio
               </FormLabel>
               <Textarea
                 id="bio"
-             
                 fontSize="1.5rem"
                 placeholder="Write something interesting..."
                 size="lg"
@@ -104,29 +77,28 @@ const ProfileModel = ({ isOpen, onOpen, onClose }) => {
           </InputGroup>
         </ModalBody>
         <ModalFooter>
-          {/* <Button onClick={onClose}>Save</Button> */}
           <Button
-          onClick={onClose}
-          fontSize="2xl"
-          variant="ghost"
-          bg="#288cfb"
-          color="white"
-          size="lg"
-          h="3.8rem"
-          mt={2}
-          borderRadius="1rem"
-          _hover={{
-            bgColor: "blue.500",
-          }}
-          _focus={{
-            bgColor: "none",
-          }}
-          _active={{
-            bgColor: "blue.600",
-          }}
-        >
-          save
-        </Button>
+            onClick={onClose}
+            fontSize="2xl"
+            variant="ghost"
+            bg="#288cfb"
+            color="white"
+            size="lg"
+            h="3.8rem"
+            mt={2}
+            borderRadius="1rem"
+            _hover={{
+              bgColor: "blue.500",
+            }}
+            _focus={{
+              bgColor: "none",
+            }}
+            _active={{
+              bgColor: "blue.600",
+            }}
+          >
+            save
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

@@ -1,9 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
-import {login,signup} from "./../asyncThunks/authThunk"
+import {
+  login,
+  signup,
+  addBookmark,
+  removeBookmark,
+} from './../asyncThunks/index'
 
 const initialState = {
   user: JSON.parse(localStorage.getItem('user')) || null,
   token: localStorage.getItem('token') || null,
+  bookmarks: [],
 }
 
 const authSlice = createSlice({
@@ -16,11 +22,10 @@ const authSlice = createSlice({
       localStorage.removeItem('user')
       localStorage.removeItem('token')
     },
-    
   },
-  extraReducers:{
+
+  extraReducers: {
     [login.fulfilled]: (state, action) => {
-      console.log(action,"action");
       state.user = action.payload.data.foundUser
       state.token = action.payload.data.encodedToken
     },
@@ -34,9 +39,20 @@ const authSlice = createSlice({
     [signup.rejected]: (action) => {
       console.error(action)
     },
-  }
-
+    [addBookmark.fulfilled]: (state, action) => {
+      state.bookmarks = action.payload.data.bookmarks
+    },
+    [addBookmark.rejected]: (action) => {
+      console.log(action)
+    },
+    [removeBookmark.fulfilled]: (state, action) => {
+      state.bookmarks = action.payload.data.bookmarks
+    },
+    [removeBookmark.rejected]: (action) => {
+      console.log(action)
+    },
+  },
 })
 
-export const {logoutUser } = authSlice.actions
+export const { logoutUser } = authSlice.actions
 export default authSlice.reducer

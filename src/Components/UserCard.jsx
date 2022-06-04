@@ -1,54 +1,71 @@
 import { Avatar, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { BiPlus } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUser } from "../redux/asyncThunks/userThunk";
+import { useEffect } from "react";
 const UserCard = () => {
+  const { users } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, []);
+  const allusers = users.filter(
+    (eachauser) => eachauser.username !== user.username
+  );
   return (
     <>
-      <Flex flexDirection="column" gap="1rem" 
-      >
-        <Flex
-          w="30rem"
-          h="8rem"
-          mt={2}
-          bgColor="#1A202C"
-          borderRadius="1rem"
-          align="center"
-          gap={3}
-        >
-          <Avatar
-            size="xl"
-            ml="0.5rem"
-            value="avatar"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq_I0JFO2DxoAV3J-sI7ajtx0qW0Q5neaY_A&usqp=CAU"
-          />
-          <Flex flexDirection="column" justifyContent="center" ml="1rem">
-            <Heading as="h3" fontSize="1.5rem">
-              Neetu Kumari
-            </Heading>
-            <Text>@neetuKumari</Text>
-          </Flex>
-          <Button
-            leftIcon={<BiPlus color="blue.200" fontSize="2rem" />}
-            fontSize="2xl"
-            variant="ghost"
-            bg="#288cfb"
-            color="white"
-            size="lg"
-            h="3.8rem"
+      {allusers.map((eachauser,index) => {
+        return (
+          <Flex
+            w="30rem"
+            h="8rem"
+            mt={2}
+            bgColor="#1A202C"
             borderRadius="1rem"
-            _hover={{
-              bgColor: "blue.500",
-            }}
-            _focus={{
-              bgColor: "none",
-            }}
-            _active={{
-              bgColor: "blue.600",
-            }}
+            align="center"
+            gap={3}
+            box-sizing=" border-box"
+            key={index}
           >
-            Follow
-          </Button>
-        </Flex>
-      </Flex>
+            <Avatar
+              size="lg"
+              ml="2rem"
+              value="avatar"
+              src={eachauser.profile}
+            />
+            <Flex flexDirection="column" justifyContent="center" ml="1rem">
+              <Heading as="h3" fontSize="1.5rem">
+                {`${eachauser.firstName} ${eachauser.lastName}`}
+              </Heading>
+              <Text>{`@${eachauser.username}`}</Text>
+            </Flex>
+            <Button
+              leftIcon={<BiPlus color="blue.200" fontSize="2rem" />}
+              fontSize="2xl"
+              variant="ghost"
+              bg="#288cfb"
+              color="white"
+              size="lg"
+              h="3.8rem"
+              box-sizing=" border-box"
+              borderRadius="1rem"
+              _hover={{
+                bgColor: "blue.500",
+              }}
+              _focus={{
+                bgColor: "none",
+              }}
+              _active={{
+                bgColor: "blue.600",
+              }}
+            >
+              Follow
+            </Button>
+          </Flex>
+        );
+      })}
     </>
   );
 };

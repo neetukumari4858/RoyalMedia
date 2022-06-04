@@ -1,11 +1,13 @@
 import React from "react";
-import { Post } from "./../../Components/Post";
-import { Flex, Heading, Box, Text } from "@chakra-ui/react";
+import { Flex, Heading, Box } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
-import { UserCard, Sidebar } from "./../../Components/index";
+import { UserCard, Sidebar, Post, PostCard  } from "./../../Components/index";
+import { useSelector } from "react-redux";
 
 function Bookmark() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { bookmarks } = useSelector((state) => state.auth);
+
   return (
     <>
       <Post isOpen={isOpen} onClose={onClose} />
@@ -13,13 +15,19 @@ function Bookmark() {
         bgColor="#1A202C"
         gap="1.3rem"
         color="white"
+        h="70rem"
         justifyContent="space-between"
       >
         <Sidebar onOpen={onOpen} />
         <Box flexDirection="column" mt="3rem" w="60rem" bgColor="#1A202C">
           <Heading>Bookmark</Heading>
-
-          <Text fontSize="2rem">No Bookmarks Yet</Text>
+          {bookmarks?.length > 0 ? (
+            bookmarks.map((post) => {
+              return <PostCard key={post._id} post={post} />;
+            })
+          ) : (
+            <Heading color="gray.600">Nothing in bookmark</Heading>
+          )}
         </Box>
         <Flex
           bgColor="#2D3748"
@@ -36,8 +44,6 @@ function Bookmark() {
           <Heading as="h4" size="xl" w="30rem" borderBottom="1px">
             Who to follow
           </Heading>
-          <UserCard />
-          <UserCard />
           <UserCard />
         </Flex>
       </Flex>

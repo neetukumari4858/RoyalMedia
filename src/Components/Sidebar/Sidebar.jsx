@@ -3,14 +3,14 @@ import { BsBookmarkFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import {MdExplore,MdLogout}  from "react-icons/md";
-// import {MdLogout ,} from "react-icons/io"
+
 const Sidebar = ({ onOpen }) => {
   return (
     <div className="sidebar-container">
+      <div className="sidebar">
        <div className="nav-section">
         <label className="logo">Royalmedia</label>
       </div>
-      <div className="sidebar">
      
         <Link className="sidebarItemsLink" to="/">
           <i className="fa fa-home"></i>Home
@@ -29,12 +29,6 @@ const Sidebar = ({ onOpen }) => {
             <CgProfile />
           </i>
           Profile
-        </Link>
-        <Link className="sidebarItemsLink" to="/loginPage">
-          <i className="fa">
-            <MdLogout/>
-          </i>
-          Logout
         </Link>
         <button className="create-Post-btn"  onClick={onOpen}>
           Create New Post

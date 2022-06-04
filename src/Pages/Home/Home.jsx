@@ -1,11 +1,23 @@
-import { Post } from "./../../Components/Post";
+
+import { useEffect } from "react";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { Flex, Heading, Button, Text, Box } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
-import { UserCard, Sidebar, PostCard } from "./../../Components/index";
+import { UserCard, Sidebar, PostCard,Post} from "./../../Components/index";
+import { useDispatch, useSelector } from "react-redux";
+import { getPost } from "../../redux/asyncThunks/index"
 
 function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const dispatch = useDispatch();
+  const { posts, status } = useSelector((state) => state.post);
+
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(getPost());
+    }
+  }, [dispatch, status, posts]);
+
   return (
     <>
       <Post isOpen={isOpen} onClose={onClose} />
@@ -16,7 +28,7 @@ function Home() {
         justifyContent="space-between"
       >
         <Sidebar onOpen={onOpen} />
-        <Box flexDirection="column" mt="3rem" w="60rem" bgColor="#1A202C">
+        <Box flexDirection="column" w="60rem" bgColor="#1A202C">
           <Heading>Home</Heading>
           <Text
             bg="#2D3748"
@@ -45,13 +57,16 @@ function Home() {
               }}
             />
             <Text color="gray.400" ml={20} mt={-9} fontSize="1.3rem">
-              {" "}
               Write something interesting...
             </Text>
           </Text>
-          <PostCard />
-          <PostCard />
-          <PostCard />
+          {posts?.length > 0 ? (
+            posts.map((post) => {
+              return <PostCard key={post.id} post={post} />;
+            })
+          ) : (
+            <Heading color="gray.600">Nothing to Home</Heading>
+          )}
         </Box>
         <Flex
           bgColor="#2D3748"
@@ -68,8 +83,6 @@ function Home() {
           <Heading as="h4" size="xl" w="30rem" borderBottom="1px">
             Who to follow
           </Heading>
-          <UserCard />
-          <UserCard />
           <UserCard />
         </Flex>
       </Flex>
