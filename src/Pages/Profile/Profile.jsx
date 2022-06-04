@@ -1,6 +1,6 @@
 import React from "react";
 import { Flex, Heading, Box } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import {
   UserCard,
   Sidebar,
@@ -17,18 +17,20 @@ function Profile() {
   const { posts } = useSelector((state) => state.post);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
+  const [userEditPost,setUserEditPost] = useState(null)
 
   const userPost = posts.filter(
     (userpost) => userpost.username === user.username
   );
-
   useEffect(() => {
     dispatch(getPost());
   });
 
+
   return (
     <>
-      <Post isOpen={isOpen} onClose={onClose} />
+      <Post isOpen={isOpen} onClose={onClose} userEditPost={userEditPost}
+        setUserEditPost={setUserEditPost}/>
       <Flex
         bgColor="#1A202C"
         color="white"
@@ -40,7 +42,7 @@ function Profile() {
         <Box flexDirection="column" mt="3rem" w="60rem" bgColor="#1A202C">
           <ProfileCard />
           {userPost.map((post) => {
-            return <PostCard onOpen={onOpen} key={post._id} post={post} />;
+            return <PostCard setUserEditPost={setUserEditPost} key={post._id} post={post} onOpen={onOpen} />;
           })}
         </Box>
         <Flex

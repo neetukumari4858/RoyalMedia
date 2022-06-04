@@ -40,6 +40,18 @@ export const postSlice = createSlice({
     [createPost.rejected]: (action) => {
       console.log(action)
     },
+    [deletePost.fulfilled]: (state, action) => {
+      state.posts = action.payload.data.posts
+    },
+    [deletePost.rejected]: (action) => {
+      console.log(action)
+    },
+    [editPost.fulfilled]: (state, action) => {
+      state.posts = action.payload.data.posts
+    },
+    [editPost.rejected]: (action) => {
+      console.log(action)
+    },
 })
 
 export default postSlice.reducer

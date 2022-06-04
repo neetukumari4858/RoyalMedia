@@ -9,19 +9,38 @@ import {
     Textarea,
     Button,
   } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { createPost } from '../redux/asyncThunks/postThunk'
+import { createPost,editPost } from '../redux/asyncThunks/postThunk'
+import {toast} from "react-toastify"
 
-const Post = ({ isOpen, onClose }) => {
+const Post = ({ isOpen, onClose,userEditPost  }) => {
   const dispatch=useDispatch()
   const {token}=useSelector((store)=>store.auth)
   const [postData,setpostdata]=useState("")
-  const postCreateHandler=()=>{
-    dispatch(createPost({postData,token}))
-    setpostdata("")
-    onClose()
-    
+
+  useEffect(()=>{
+    setpostdata(userEditPost?.content)
+
+  },[userEditPost])
+  
+  const postCreateHandler = () => {
+    if (userEditPost) {
+      const postDetail = {
+        _id: userEditPost._id,
+      }
+      dispatch(editPost({ postDetail, postData, token }))
+      setpostdata('')
+      onClose()
+      toast.success('Post edited!')
+    } else {
+      if (postData) {
+        dispatch(createPost({ postData, token }))
+        setpostdata("")
+        onClose()
+        toast.success('Post created!')
+      }
+    }
   }
   return (
       <Modal isOpen={isOpen} onClose={onClose} size="xl" fontSize="2rem">

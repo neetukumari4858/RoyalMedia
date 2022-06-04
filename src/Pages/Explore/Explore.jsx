@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { Flex, Heading, Button, Box } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { UserCard, Sidebar, PostCard,Post  } from "./../../Components/index";
@@ -10,6 +10,7 @@ function Explore() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const { posts, status } = useSelector((state) => state.post);
+  const [userEditPost,setUserEditPost] = useState(null)
   useEffect(() => {
     if (status === "idle") {
       dispatch(getPost());
@@ -17,7 +18,8 @@ function Explore() {
   }, [dispatch, status, posts]);
   return (
     <>
-      <Post isOpen={isOpen} onClose={onClose} />
+      <Post isOpen={isOpen} onClose={onClose} userEditPost={userEditPost}
+        setUserEditPost={setUserEditPost} />
       <Flex
         bgColor="#1A202C"
         color="white"
@@ -72,7 +74,7 @@ function Explore() {
           </Flex>
           {posts?.length > 0 ? (
             posts.map((post) => {
-              return <PostCard key={post.id} post={post} />;
+              return <PostCard key={post.id} post={post} setUserEditPost={setUserEditPost}  onOpen={onOpen}/>;
             })
           ) : (
             <Heading color="gray.600">Nothing to Explore</Heading>

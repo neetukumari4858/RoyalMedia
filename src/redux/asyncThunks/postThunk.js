@@ -59,7 +59,7 @@ const createPost = createAsyncThunk(
         },
       )
       const data = { data: response.data }
-      console.log(response)
+      // console.log(response)
       return data
     } catch (error) {
       return rejectWithValue({
@@ -69,4 +69,42 @@ const createPost = createAsyncThunk(
   },
 )
 
-export { getPost, likePost, dislikePost,createPost }
+const deletePost = createAsyncThunk(
+  'posts/deletePost',
+  async ({ _id, token }, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete(`/api/posts/${_id}`, {
+        headers: { authorization: token },
+      })
+      const data = { data: response.data, status: response.status }
+      return data
+    } catch (error) {
+      return rejectWithValue({
+        data: error.response.data,
+        status: error.response.status,
+      })
+    }
+  },
+)
+
+const editPost = createAsyncThunk(
+  'posts/editPost',
+  async ({ postDetail, postData, token }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        `/api/posts/edit/${postDetail._id}`,
+        { postData },
+        { headers: { authorization: token } },
+      )
+      console.log(response,"edit")
+      const data = { data: response.data, status: response.status }
+      return data
+    } catch (error) {
+      console.error(error)
+      return rejectWithValue({ data: error.response.data })
+    }
+  },
+)
+
+
+export { getPost, likePost, dislikePost,createPost,editPost, deletePost  }
