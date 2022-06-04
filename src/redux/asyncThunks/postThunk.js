@@ -47,4 +47,26 @@ const dislikePost = createAsyncThunk(
   },
 )
 
-export { getPost, likePost, dislikePost }
+const createPost = createAsyncThunk(
+  'posts/createPost',
+  async ({ postData, token }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        '/api/posts',
+        { postData },
+        {
+          headers: { authorization: token },
+        },
+      )
+      const data = { data: response.data }
+      console.log(response)
+      return data
+    } catch (error) {
+      return rejectWithValue({
+        data: error.response.data,
+      })
+    }
+  },
+)
+
+export { getPost, likePost, dislikePost,createPost }

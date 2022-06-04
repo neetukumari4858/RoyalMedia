@@ -25,11 +25,13 @@ function Home() {
         bgColor="#1A202C"
         gap="1rem"
         color={"white"}
-        justifyContent="space-between"
+        h="100%"
+        w="100%"
+        justifyContent="space-evenly"
       >
         <Sidebar onOpen={onOpen} />
-        <Box flexDirection="column" w="60rem" bgColor="#1A202C">
-          <Heading>Home</Heading>
+        <Box flexDirection="column" w="60rem" h="100%" bgColor="#1A202C">
+          <Heading mt="3rem">Home</Heading>
           <Text
             bg="#2D3748"
             w="100%"
@@ -62,7 +64,7 @@ function Home() {
           </Text>
           {posts?.length > 0 ? (
             posts.map((post) => {
-              return <PostCard key={post.id} post={post} />;
+              return <PostCard onOpen={onOpen} key={post.id} post={post} />;
             })
           ) : (
             <Heading color="gray.600">Nothing to Home</Heading>
@@ -76,7 +78,6 @@ function Home() {
           borderRadius="1rem"
           position="sticky"
           top="2rem"
-          w="38rem"
           h="40rem"
           bottom="0"
         >

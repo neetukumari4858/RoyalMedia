@@ -20,13 +20,14 @@ function Explore() {
       <Post isOpen={isOpen} onClose={onClose} />
       <Flex
         bgColor="#1A202C"
-        gap="3rem"
         color="white"
-        justifyContent="space-between"
+        h="100%"
+        w="100%"
+        justifyContent="space-evenly"
       >
         <Sidebar onOpen={onOpen} />
         <Box flexDirection="column" mt="2rem" w="60rem" bgColor="#1A202C">
-          <Heading>Explore</Heading>
+          <Heading mt="1rem">Explore</Heading>
           <Flex gap={5} mt={3}>
             <Button
               fontSize="2xl"
@@ -85,7 +86,6 @@ function Explore() {
           borderRadius="1rem"
           position="sticky"
           top="2rem"
-          w="38rem"
           h="40rem"
           bottom="0"
         >

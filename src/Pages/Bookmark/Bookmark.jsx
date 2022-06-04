@@ -13,10 +13,10 @@ function Bookmark() {
       <Post isOpen={isOpen} onClose={onClose} />
       <Flex
         bgColor="#1A202C"
-        gap="1.3rem"
         color="white"
-        h="70rem"
-        justifyContent="space-between"
+        justifyContent="space-evenly"
+        w="100%"
+        h="100rem"
       >
         <Sidebar onOpen={onOpen} />
         <Box flexDirection="column" mt="3rem" w="60rem" bgColor="#1A202C">
@@ -37,7 +37,6 @@ function Bookmark() {
           borderRadius="1rem"
           position="sticky"
           top="2rem"
-          w="37rem"
           h="40rem"
           bottom="0"
         >

@@ -1,10 +1,16 @@
 import React from "react";
 import { Flex, Heading, Box } from "@chakra-ui/react";
 import { useEffect } from "react";
-import { UserCard, Sidebar, Post, ProfileCard ,PostCard} from "./../../Components/index";
+import {
+  UserCard,
+  Sidebar,
+  Post,
+  ProfileCard,
+  PostCard,
+} from "./../../Components/index";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { useSelector, useDispatch } from "react-redux";
-import { getPost } from "../../redux/asyncThunks/index"
+import { getPost } from "../../redux/asyncThunks/index";
 
 function Profile() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,9 +32,9 @@ function Profile() {
       <Flex
         bgColor="#1A202C"
         color="white"
-        gap="1.3rem"
-        h="80rem"
-        justifyContent="space-between"
+        h="100%"
+        w="100%"
+        justifyContent="space-evenly"
       >
         <Sidebar onOpen={onOpen} />
         <Box flexDirection="column" mt="3rem" w="60rem" bgColor="#1A202C">
@@ -45,7 +51,6 @@ function Profile() {
           borderRadius="1rem"
           position="sticky"
           top="2rem"
-          w="38rem"
           h="40rem"
           bottom="0"
         >

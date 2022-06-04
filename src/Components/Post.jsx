@@ -9,9 +9,21 @@ import {
     Textarea,
     Button,
   } from '@chakra-ui/react'
-  
-  const Post = ({ isOpen, onClose }) => {
-    return (
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { createPost } from '../redux/asyncThunks/postThunk'
+
+const Post = ({ isOpen, onClose }) => {
+  const dispatch=useDispatch()
+  const {token}=useSelector((store)=>store.auth)
+  const [postData,setpostdata]=useState("")
+  const postCreateHandler=()=>{
+    dispatch(createPost({postData,token}))
+    setpostdata("")
+    onClose()
+    
+  }
+  return (
       <Modal isOpen={isOpen} onClose={onClose} size="xl" fontSize="2rem">
         <ModalOverlay />
         <ModalContent 
@@ -26,15 +38,17 @@ import {
               fontSize="1.5rem"
               placeholder="Write something interesting..."
               resize="none"
+              value={postData}
+              onChange={(e)=>setpostdata(e.target.value)}
             />
           </ModalBody>
           <ModalFooter>
             <Button
               colorScheme="blue"
               mr={3}
-              onClick={onClose}
               size="lg"
               fontSize="1.5rem"
+              onClick={postCreateHandler}
             >
               Post
             </Button>
