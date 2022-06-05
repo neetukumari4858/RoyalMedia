@@ -10,15 +10,13 @@ import { getPost} from "../../redux/asyncThunks/index"
 function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
-  const { posts, status } = useSelector((state) => state.post);
+  const { posts } = useSelector((state) => state.post);
   const [userEditPost, setUserEditPost] = useState(null)
 
   useEffect(() => {
-    if (status === "idle") {
       dispatch(getPost());
 
-    }
-  }, [dispatch, status, posts]);
+  }, [dispatch,  posts]);
 
   return (
     <>

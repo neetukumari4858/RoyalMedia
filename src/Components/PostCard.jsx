@@ -258,10 +258,11 @@ const PostCard = ({ post ,onOpen,setUserEditPost}) => {
                               padding="1rem"
                             >
                               <Button
-                                leftIcon={<FaEdit />}
+                                leftIcon={<FaEdit ml={-6}/>}
                                 fontSize="1.5rem"
                                 bg="transparent"
                                 color="#1A202C"
+                               
                               >
                                 Edit
                               </Button>
