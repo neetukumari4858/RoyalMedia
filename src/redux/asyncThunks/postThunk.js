@@ -37,7 +37,6 @@ const dislikePost = createAsyncThunk(
         {},
         { headers: { authorization: token } },
       )
-      console.log(response, 'dislikes')
       const data = { data: response.data }
       return data
     } catch (error) {
@@ -59,7 +58,6 @@ const createPost = createAsyncThunk(
         },
       )
       const data = { data: response.data }
-      // console.log(response)
       return data
     } catch (error) {
       return rejectWithValue({
