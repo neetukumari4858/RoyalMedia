@@ -19,7 +19,14 @@ const initialState = {
 export const postSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {},
+  reducers: {
+    trendingPostHandler:(state)=>{
+      state.posts.sort((a, b ) =>b.likes.likeCount - a.likes.likeCount)
+     },
+     latestPostHandler:(state)=>{
+       state.posts.sort((a,b)=>b.createdAt - a.createdAt)
+     }
+  },
 
   extraReducers: {
     [getPost.fulfilled]: (state, action) => {
@@ -72,7 +79,8 @@ export const postSlice = createSlice({
     [deleteComment.rejected]: (action) => {
       console.log(action)
     },
-  },
+  },  
 })
 
+export const {trendingPostHandler, latestPostHandler} = postSlice.actions;      
 export default postSlice.reducer

@@ -24,7 +24,7 @@ function Profile() {
   );
   useEffect(() => {
     dispatch(getPost());
-  });
+  },[]);
 
 
   return (
