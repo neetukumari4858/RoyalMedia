@@ -8,10 +8,10 @@ const Sidebar = ({ onOpen }) => {
   return (
     <div className="sidebar-container">
       <div className="sidebar">
+     
        <div className="nav-section">
         <label className="logo">Royalmedia</label>
       </div>
-     
         <Link className="sidebarItemsLink" to="/">
           <i className="fa fa-home"></i>Home
         </Link>

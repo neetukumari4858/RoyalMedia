@@ -37,7 +37,6 @@ const dislikePost = createAsyncThunk(
         {},
         { headers: { authorization: token } },
       )
-      console.log(response, 'dislikes')
       const data = { data: response.data }
       return data
     } catch (error) {
@@ -47,4 +46,63 @@ const dislikePost = createAsyncThunk(
   },
 )
 
-export { getPost, likePost, dislikePost }
+const createPost = createAsyncThunk(
+  'posts/createPost',
+  async ({ postData, token }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        '/api/posts',
+        { postData },
+        {
+          headers: { authorization: token },
+        },
+      )
+      const data = { data: response.data }
+      return data
+    } catch (error) {
+      return rejectWithValue({
+        data: error.response.data,
+      })
+    }
+  },
+)
+
+const deletePost = createAsyncThunk(
+  'posts/deletePost',
+  async ({ _id, token }, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete(`/api/posts/${_id}`, {
+        headers: { authorization: token },
+      })
+      const data = { data: response.data, status: response.status }
+      return data
+    } catch (error) {
+      return rejectWithValue({
+        data: error.response.data,
+        status: error.response.status,
+      })
+    }
+  },
+)
+
+const editPost = createAsyncThunk(
+  'posts/editPost',
+  async ({ postDetail, postData, token }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        `/api/posts/edit/${postDetail._id}`,
+        { postData },
+        { headers: { authorization: token } },
+      )
+      console.log(response,"edit")
+      const data = { data: response.data, status: response.status }
+      return data
+    } catch (error) {
+      console.error(error)
+      return rejectWithValue({ data: error.response.data })
+    }
+  },
+)
+
+
+export { getPost, likePost, dislikePost,createPost,editPost, deletePost  }

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Handlee&family=Raleway&display=swap");
 .sidebar {
   height: 51rem;
-  width: 25rem;
+  width: 15rem;
   background-color: var(--bg-color);
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@
 }
 .sidebarItemsLink {
   display: flex;
-  width: 15rem;
+  width: 16rem;
   text-decoration: none;
   padding: 1rem;
   flex-wrap: wrap;
@@ -63,12 +63,12 @@
 }
 
 .create-Post-btn {
-  padding: 1.5rem 3rem;
+  width: 16rem;
+  padding: 1.3rem;
   border-radius: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   background-color: var(--text-color);
-  margin-top: -12rem;
-  margin-left: 2rem;
+  margin-top: -11rem;
   color: var(--white-color);
   font-weight: 900;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { Flex, Heading, Button, Box } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { UserCard, Sidebar, PostCard,Post  } from "./../../Components/index";
@@ -9,24 +9,25 @@ import { getPost } from "../../redux/asyncThunks/index"
 function Explore() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
-  const { posts, status } = useSelector((state) => state.post);
+  const { posts } = useSelector((state) => state.post);
+  const [userEditPost,setUserEditPost] = useState(null)
   useEffect(() => {
-    if (status === "idle") {
       dispatch(getPost());
-    }
-  }, [dispatch, status, posts]);
+  }, [dispatch, posts]);
   return (
     <>
-      <Post isOpen={isOpen} onClose={onClose} />
+      <Post isOpen={isOpen} onClose={onClose} userEditPost={userEditPost}
+        setUserEditPost={setUserEditPost} />
       <Flex
         bgColor="#1A202C"
-        gap="3rem"
         color="white"
-        justifyContent="space-between"
+        h="100%"
+        w="100%"
+        justifyContent="space-evenly"
       >
         <Sidebar onOpen={onOpen} />
         <Box flexDirection="column" mt="2rem" w="60rem" bgColor="#1A202C">
-          <Heading>Explore</Heading>
+          <Heading mt="1rem">Explore</Heading>
           <Flex gap={5} mt={3}>
             <Button
               fontSize="2xl"
@@ -71,7 +72,7 @@ function Explore() {
           </Flex>
           {posts?.length > 0 ? (
             posts.map((post) => {
-              return <PostCard key={post.id} post={post} />;
+              return <PostCard key={post.id} post={post} setUserEditPost={setUserEditPost}  onOpen={onOpen}/>;
             })
           ) : (
             <Heading color="gray.600">Nothing to Explore</Heading>
@@ -85,7 +86,6 @@ function Explore() {
           borderRadius="1rem"
           position="sticky"
           top="2rem"
-          w="38rem"
           h="40rem"
           bottom="0"
         >

@@ -24,11 +24,11 @@ import {
 } from "react-icons/bs";
 import { FaEdit, FaTrash, FaHeart } from "react-icons/fa";
 import { BiHeart } from "react-icons/bi";
-import { likePost, dislikePost } from "../redux/asyncThunks/postThunk";
+import { likePost, dislikePost,deletePost } from "../redux/asyncThunks/postThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { addBookmark, removeBookmark } from "../redux/asyncThunks/authThunk";
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post ,onOpen,setUserEditPost}) => {
   const dispatch = useDispatch();
   const { token, bookmarks } = useSelector((state) => state.auth);
   const {
@@ -62,6 +62,16 @@ const PostCard = ({ post }) => {
       dispatch(addBookmark({ _id, token }));
     }
   };
+
+  const deletePostHandler = () => {
+    dispatch(deletePost({ _id, token }))
+  }
+
+  const editPostHandler = () => {
+    setUserEditPost(post)
+    onOpen()
+  }
+
 
   return (
     <>
@@ -113,6 +123,7 @@ const PostCard = ({ post }) => {
                     fontSize="1.5rem"
                     bg="transparent"
                     color="#1A202C"
+                    onClick={editPostHandler}
                   >
                     Edit
                   </Button>
@@ -121,6 +132,7 @@ const PostCard = ({ post }) => {
                     fontSize="1.5rem"
                     bg="transparent"
                     color="#1A202C"
+                    onClick={deletePostHandler}
                   >
                     Delete
                   </Button>
@@ -246,10 +258,11 @@ const PostCard = ({ post }) => {
                               padding="1rem"
                             >
                               <Button
-                                leftIcon={<FaEdit />}
+                                leftIcon={<FaEdit ml={-6}/>}
                                 fontSize="1.5rem"
                                 bg="transparent"
                                 color="#1A202C"
+                               
                               >
                                 Edit
                               </Button>
