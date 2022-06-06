@@ -2,9 +2,9 @@ import React from "react";
 import { useEffect,useState } from "react";
 import { Flex, Heading, Button, Box } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
-import { UserCard, Sidebar, PostCard,Post  } from "./../../Components/index";
+import { Suggestion, Sidebar, PostCard,Post  } from "./../../Components/index";
 import { useDispatch, useSelector } from "react-redux";
-import { getPost } from "../../redux/asyncThunks/index"
+import { getPost,getAllUser } from "../../redux/asyncThunks/index"
 import {
   trendingPostHandler,
   latestPostHandler,
@@ -17,6 +17,7 @@ function Explore() {
   const [userEditPost,setUserEditPost] = useState(null)
   useEffect(() => {
       dispatch(getPost());
+      dispatch(getAllUser())
   }, []);
 
 
@@ -107,7 +108,7 @@ function Explore() {
           <Heading as="h4" size="xl" w="30rem" borderBottom="1px">
             Who to follow
           </Heading>
-          <UserCard />
+          <Suggestion />
         </Flex>
       </Flex>
     </>

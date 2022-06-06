@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, Heading, Box } from "@chakra-ui/react";
 import { useEffect,useState } from "react";
 import {
-  UserCard,
+  Suggestion,
   Sidebar,
   Post,
   ProfileCard,
@@ -10,7 +10,7 @@ import {
 } from "./../../Components/index";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { useSelector, useDispatch } from "react-redux";
-import { getPost } from "../../redux/asyncThunks/index";
+import { getPost ,getAllUser} from "../../redux/asyncThunks/index";
 
 function Profile() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -24,6 +24,7 @@ function Profile() {
   );
   useEffect(() => {
     dispatch(getPost());
+    dispatch(getAllUser())
   },[]);
 
 
@@ -59,7 +60,7 @@ function Profile() {
           <Heading as="h4" size="xl" w="30rem" borderBottom="1px">
             Who to follow
           </Heading>
-          <UserCard />
+          <Suggestion />
         </Flex>
       </Flex>
     </>

@@ -21,13 +21,19 @@ const ProfileCard = () => {
   const dispatch = useDispatch();
 
   const { user, token } = useSelector((state) => state.auth);
+  const { users } = useSelector((state) => state.user)
   const { firstName, lastName, username, bio, link, profile } = user;
-
+const {posts}=useSelector((state)=>state.post)
   const logoutHandler = () => {
     dispatch(logoutUser());
     navigate("/");
     toast.success("Loggedout Successfully.");
   };
+
+  const existUser = users?.find((eachUser) => eachUser._id === user._id)
+  const userPost = posts.filter(
+    (eachUser) => eachUser.username === user.username,
+  )
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
@@ -100,13 +106,13 @@ const ProfileCard = () => {
         </Link>
         <Flex gap="6rem">
           <Flex flexDirection="column" alignItems="center">
-            <Heading>0</Heading>
+            <Heading> {existUser?.following.length}</Heading>
             <Text fontSize="1.5rem" fontWeight="bold">
               Following
             </Text>
           </Flex>
           <Flex flexDirection="column" alignItems="center">
-            <Heading>0</Heading>
+            <Heading>{userPost.length}</Heading>
             <Text fontSize="1.5rem" fontWeight="bold">
               Post
             </Text>

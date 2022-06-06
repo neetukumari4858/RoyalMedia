@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex, Heading, Box } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
-import { UserCard, Sidebar, Post, PostCard  } from "./../../Components/index";
+import { Suggestion, Sidebar, Post, PostCard  } from "./../../Components/index";
 import { useSelector } from "react-redux";
 
 function Bookmark() {
@@ -43,7 +43,7 @@ function Bookmark() {
           <Heading as="h4" size="xl" w="30rem" borderBottom="1px">
             Who to follow
           </Heading>
-          <UserCard />
+          <Suggestion />
         </Flex>
       </Flex>
     </>
