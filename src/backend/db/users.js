@@ -12,7 +12,7 @@ export const users = [
     lastName: 'Kumari',
     username: 'Neetu',
     password: 'neetu123',
-    bio: 'I am fresher in web developement',
+    bio: 'I am fresher in web Developement',
     link: 'https://adarshbalika.netlify.app/',
     profile:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRODPqk7Q74WjEwsgk_HqwvLnrUrWDc0txOS4Xm7qrDkQbRLBSR306nPO9UUf-cZTlArKc&usqp=CAU',
@@ -25,7 +25,7 @@ export const users = [
     lastName: 'Driss',
     username: 'Elden',
     password: 'Elden123',
-    bio: 'I am fresher in web developement',
+    bio: 'I am fresher in web Developement',
     link: 'https://adarshbalika.netlify.app/',
     profile:
       'https://png.pngitem.com/pimgs/s/570-5706525_tiffanie-circle-headshot-2018-blond-hd-png-download.png',
@@ -39,7 +39,7 @@ export const users = [
     lastName: 'Dr',
     username: 'Charless',
     password: 'Charless123',
-    bio: 'I am fresher in web developement',
+    bio: 'I am fresher in web Developement',
     link: 'https://adarshbalika.netlify.app/',
     profile:
       'https://www.kindpng.com/picc/m/168-1684606_circle-headshot-girl-hd-png-download.png',
@@ -52,7 +52,7 @@ export const users = [
     lastName: 'Devin',
     username: 'Johan',
     password: 'Charless123',
-    bio: 'I am fresher in web developement',
+    bio: 'I am fresher in web Developement',
     link: 'https://adarshbalika.netlify.app/',
     profile:
       'https://thumbs.dreamstime.com/z/cute-young-boy-smiling-21381704.jpg',
@@ -65,7 +65,7 @@ export const users = [
     lastName: 'Jain  ',
     username: 'Anurag',
     password: 'Charless123',
-    bio: 'I am fresher in web developement',
+    bio: 'I am fresher in web Developement',
     link: 'https://adarshbalika.netlify.app/',
     profile:
       'https://media.istockphoto.com/photos/portrait-of-a-happy-latin-american-boy-smiling-picture-id1271410473?k=20&m=1271410473&s=170667a&w=0&h=Y-w3AL1AeAGyqC-D4gDDhUVRTyouBx3useTA_FYU5wA=',
