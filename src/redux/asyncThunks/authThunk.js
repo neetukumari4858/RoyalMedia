@@ -63,7 +63,6 @@ const removeBookmark = createAsyncThunk(
       const data = { data: response.data }
       return data
     } catch (error) {
-      console.error(error)
       return rejectWithValue({ data: error.response.data })
     }
   },
@@ -81,7 +80,6 @@ const editProfile = createAsyncThunk(
       const data = { data: response.data }
       return data
     } catch (error) {
-      console.error(error)
       return rejectWithValue({ data: error.response.data })
     }
   },
