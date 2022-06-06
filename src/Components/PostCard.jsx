@@ -24,13 +24,21 @@ import {
 } from "react-icons/bs";
 import { FaEdit, FaTrash, FaHeart } from "react-icons/fa";
 import { BiHeart } from "react-icons/bi";
-import { likePost, dislikePost,deletePost } from "../redux/asyncThunks/postThunk";
+import {
+  likePost,
+  dislikePost,
+  deletePost,
+  commentPost,
+  deleteComment,
+} from "../redux/asyncThunks/postThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { addBookmark, removeBookmark } from "../redux/asyncThunks/authThunk";
+import { useState } from "react";
 
-const PostCard = ({ post ,onOpen,setUserEditPost}) => {
+const PostCard = ({ post, onOpen, setUserEditPost }) => {
   const dispatch = useDispatch();
   const { token, bookmarks } = useSelector((state) => state.auth);
+  const [commentData, setCommentData] = useState("");
   const {
     _id,
     comments,
@@ -64,14 +72,27 @@ const PostCard = ({ post ,onOpen,setUserEditPost}) => {
   };
 
   const deletePostHandler = () => {
-    dispatch(deletePost({ _id, token }))
-  }
+    dispatch(deletePost({ _id, token }));
+  };
 
   const editPostHandler = () => {
-    setUserEditPost(post)
-    onOpen()
-  }
+    setUserEditPost(post);
+    onOpen();
+  };
 
+  const commentInputHandler = (e) => {
+    setCommentData(e.target.value);
+  };
+
+  const commentPostHandler = () => {
+    if (commentData !== "") {
+      dispatch(commentPost({ _id, commentData, token }));
+      setCommentData("");
+    }
+  };
+  const deleteCommentHandler = (commentId) => {
+    dispatch(deleteComment({ postId: _id, commentId, token }));
+  };
 
   return (
     <>
@@ -191,6 +212,8 @@ const PostCard = ({ post ,onOpen,setUserEditPost}) => {
               placeholder="Write a comment"
               fontSize="1.5rem"
               size="lg"
+              value={commentData}
+              onChange={(e) => commentInputHandler(e)}
             />
             <InputRightElement mr="2rem">
               <Button
@@ -206,6 +229,7 @@ const PostCard = ({ post ,onOpen,setUserEditPost}) => {
                 _active={{
                   bgColor: "transparent",
                 }}
+                onClick={commentPostHandler}
               >
                 Post
               </Button>
@@ -258,19 +282,11 @@ const PostCard = ({ post ,onOpen,setUserEditPost}) => {
                               padding="1rem"
                             >
                               <Button
-                                leftIcon={<FaEdit ml={-6}/>}
-                                fontSize="1.5rem"
-                                bg="transparent"
-                                color="#1A202C"
-                               
-                              >
-                                Edit
-                              </Button>
-                              <Button
                                 leftIcon={<FaTrash />}
                                 fontSize="1.5rem"
                                 bg="transparent"
                                 color="#1A202C"
+                                onClick={() => deleteCommentHandler(_id)}
                               >
                                 Delete
                               </Button>

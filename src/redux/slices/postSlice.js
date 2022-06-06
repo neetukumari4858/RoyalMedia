@@ -1,6 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { getPost, likePost, dislikePost, createPost, deletePost, editPost } from '../asyncThunks/index'
+import {
+  getPost,
+  likePost,
+  dislikePost,
+  createPost,
+  deletePost,
+  editPost,
+  commentPost,
+  deleteComment,
+} from '../asyncThunks/index'
 
 const initialState = {
   posts: [],
@@ -33,7 +42,6 @@ export const postSlice = createSlice({
     [dislikePost.rejected]: (action) => {
       console.log(action)
     },
-    },
     [createPost.fulfilled]: (state, action) => {
       state.posts = action.payload.data.posts
     },
@@ -52,6 +60,19 @@ export const postSlice = createSlice({
     [editPost.rejected]: (action) => {
       console.log(action)
     },
+    [commentPost.fulfilled]: (state, action) => {
+      state.posts = action.payload.data.posts
+    },
+    [commentPost.rejected]: (action) => {
+      console.log(action)
+    },
+    [deleteComment.fulfilled]: (state, action) => {
+      state.posts = action.payload.data.posts
+    },
+    [deleteComment.rejected]: (action) => {
+      console.log(action)
+    },
+  },
 })
 
 export default postSlice.reducer
