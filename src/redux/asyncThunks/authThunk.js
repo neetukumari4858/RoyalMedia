@@ -45,7 +45,6 @@ const addBookmark = createAsyncThunk(
       const data = { data: response.data }
       return data
     } catch (error) {
-      console.log(error)
       return rejectWithValue({ data: error.response.data })
     }
   },
@@ -61,7 +60,6 @@ const removeBookmark = createAsyncThunk(
 
         { headers: { authorization: token } },
       )
-      console.log(response, 'remove')
       const data = { data: response.data }
       return data
     } catch (error) {
