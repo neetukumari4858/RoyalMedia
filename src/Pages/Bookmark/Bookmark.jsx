@@ -29,7 +29,7 @@ function Bookmark() {
             <Heading color="gray.600">Nothing in bookmark</Heading>
           )}
         </Box>
-        <Flex
+        {/* <Flex
           bgColor="#2D3748"
           padding="1.5rem"
           gap="1rem"
@@ -42,9 +42,9 @@ function Bookmark() {
         >
           <Heading as="h4" size="xl" w="30rem" borderBottom="1px">
             Who to follow
-          </Heading>
+          </Heading> */}
           <Suggestion />
-        </Flex>
+        {/* </Flex> */}
       </Flex>
     </>
   );

@@ -1,28 +1,31 @@
-
-import { useEffect ,useState} from "react";
+import { useEffect, useState } from "react";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { Flex, Heading, Button, Text, Box } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
-import {Suggestion, Sidebar, PostCard,Post} from "./../../Components/index";
+import { Suggestion, Sidebar, PostCard, Post } from "./../../Components/index";
 import { useDispatch, useSelector } from "react-redux";
-import { getPost,getAllUser} from "../../redux/asyncThunks/index"
+import { getPost, getAllUser } from "../../redux/asyncThunks/index";
 
 function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
-  const { posts } = useSelector((state) => state.post);
-  const [userEditPost, setUserEditPost] = useState(null)
+  const { posts ,status} = useSelector((state) => state.post);
+  const [userEditPost, setUserEditPost] = useState(null);
 
   useEffect(() => {
-      dispatch(getPost());
-      dispatch(getAllUser())
-
-  }, [dispatch,  posts]);
+    if (status === 'idle') {
+    dispatch(getPost());
+    dispatch(getAllUser());}
+  }, [dispatch,status, posts]);
 
   return (
     <>
-      <Post isOpen={isOpen} onClose={onClose} userEditPost={userEditPost}
-       setUserEditPost={setUserEditPost}/>
+      <Post
+        isOpen={isOpen}
+        onClose={onClose}
+        userEditPost={userEditPost}
+        setUserEditPost={setUserEditPost}
+      />
       <Flex
         bgColor="#1A202C"
         gap="1rem"
@@ -66,15 +69,20 @@ function Home() {
           </Text>
           {posts?.length > 0 ? (
             posts.map((post) => {
-              return <PostCard onOpen={onOpen}
-              setUserEditPost={setUserEditPost} key={post.id} post={post} />;
+              return (
+                <PostCard
+                  onOpen={onOpen}
+                  setUserEditPost={setUserEditPost}
+                  key={post.id}
+                  post={post}
+                />
+              );
             })
-           
           ) : (
             <Heading color="gray.600">Nothing to Home</Heading>
           )}
         </Box>
-        <Flex
+        {/* <Flex
           bgColor="#2D3748"
           padding="1.5rem"
           gap="1rem"
@@ -89,7 +97,8 @@ function Home() {
             Who to follow
           </Heading>
           <Suggestion/>
-        </Flex>
+        </Flex> */}
+        <Suggestion />
       </Flex>
     </>
   );
