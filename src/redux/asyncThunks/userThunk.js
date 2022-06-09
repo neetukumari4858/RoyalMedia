@@ -24,10 +24,8 @@ const followUser = createAsyncThunk(
         { headers: { authorization: token } },
       )
       const data = { data: response.data }
-      console.log(response, 'folloew')
       return data
     } catch (error) {
-      console.log(error, 'error')
       return rejectWithValue({data:error.response.data})
     }
   },
@@ -42,11 +40,9 @@ const unfollowUser = createAsyncThunk(
         {},
         { headers: { authorization: token } },
       )
-      console.log(response, 'unfolloew')
       const data = { data: response.data }
       return data
     } catch (error) {
-      console.error(error)
       return rejectWithValue({ data: error.response.data })
     }
   },
