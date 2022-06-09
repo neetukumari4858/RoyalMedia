@@ -27,7 +27,6 @@ const followUser = createAsyncThunk(
       console.log(response, 'folloew')
       return data
     } catch (error) {
-      console.log(error, 'error')
       return rejectWithValue({data:error.response.data})
     }
   },
@@ -46,7 +45,6 @@ const unfollowUser = createAsyncThunk(
       const data = { data: response.data }
       return data
     } catch (error) {
-      console.error(error)
       return rejectWithValue({ data: error.response.data })
     }
   },
