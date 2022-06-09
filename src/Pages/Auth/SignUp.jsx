@@ -60,7 +60,7 @@ const SignUp = () => {
             <label className="lebel-text login-lable ">
               First Name
               <input
-                className="grid-item"
+                className="grid-item signup_user-input"
                 type="text"
                 placeholder="  First Name"
                 value={newUser.firstName}
@@ -73,7 +73,7 @@ const SignUp = () => {
             <label className="lebel-text login-lable ">
               Last Name
               <input
-                className="grid-item"
+                className="grid-item signup_user-input"
                 type="text"
                 placeholder="  Last Name"
                 value={newUser.lastName}

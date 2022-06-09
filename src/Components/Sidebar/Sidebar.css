@@ -19,7 +19,6 @@
   color: var(--text-color);
   font-size: 3rem;
   font-weight: bold;
-  /* background-color: var(--bg-color); */
   font-family: "Handlee", cursive;
 }
 .logo {

@@ -63,3 +63,7 @@
 .spacing {
   height: 3.7rem;
 }
+.signup_user-input{
+  color: var(--black-color);
+  padding-left: 1.3rem;
+}

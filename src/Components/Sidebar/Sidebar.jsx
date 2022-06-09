@@ -2,7 +2,7 @@ import "./Sidebar.css";
 import { BsBookmarkFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
-import {MdExplore,MdLogout}  from "react-icons/md";
+import {MdExplore}  from "react-icons/md";
 
 const Sidebar = ({ onOpen }) => {
   return (

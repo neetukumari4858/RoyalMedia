@@ -37,7 +37,7 @@ import { useState } from "react";
 
 const PostCard = ({ post, onOpen, setUserEditPost }) => {
   const dispatch = useDispatch();
-  const { token, bookmarks } = useSelector((state) => state.auth);
+  const { user,token, bookmarks } = useSelector((state) => state.auth);
   const [commentData, setCommentData] = useState("");
   const {
     _id,
@@ -119,48 +119,50 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
               <Text fontSize="md">{createdAt}</Text>
             </Heading>
           </Flex>
-          <Popover>
-            <PopoverTrigger>
-              <IconButton
-                icon={<BsThreeDotsVertical />}
-                fontSize="1.8rem"
-                color="black"
-                bgColor="#edf2f6"
-                borderRadius="1.5rem"
-              ></IconButton>
-            </PopoverTrigger>
-            <PopoverContent w="5xs" paddingRight="1rem">
-              <PopoverCloseButton />
-              <PopoverArrow />
-              <PopoverBody>
-                <Flex
-                  flexDirection="column"
-                  justifyContent="flexStart"
-                  gap="0.2rem"
-                  padding="1rem"
-                >
-                  <Button
-                    leftIcon={<FaEdit />}
-                    fontSize="1.5rem"
-                    bg="transparent"
-                    color="#1A202C"
-                    onClick={editPostHandler}
+          {user.username === username ? (
+            <Popover>
+              <PopoverTrigger>
+                <IconButton
+                  icon={<BsThreeDotsVertical />}
+                  fontSize="1.8rem"
+                  color="black"
+                  bgColor="#edf2f6"
+                  borderRadius="1.5rem"
+                ></IconButton>
+              </PopoverTrigger>
+              <PopoverContent w="5xs" paddingRight="1rem">
+                <PopoverCloseButton />
+                <PopoverArrow />
+                <PopoverBody>
+                  <Flex
+                    flexDirection="column"
+                    justifyContent="flexStart"
+                    gap="0.2rem"
+                    padding="1rem"
                   >
-                    Edit
-                  </Button>
-                  <Button
-                    leftIcon={<FaTrash />}
-                    fontSize="1.5rem"
-                    bg="transparent"
-                    color="#1A202C"
-                    onClick={deletePostHandler}
-                  >
-                    Delete
-                  </Button>
-                </Flex>
-              </PopoverBody>
-            </PopoverContent>
-          </Popover>
+                    <Button
+                      leftIcon={<FaEdit />}
+                      fontSize="1.5rem"
+                      bg="transparent"
+                      color="#1A202C"
+                      onClick={editPostHandler}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      leftIcon={<FaTrash />}
+                      fontSize="1.5rem"
+                      bg="transparent"
+                      color="#1A202C"
+                      onClick={deletePostHandler}
+                    >
+                      Delete
+                    </Button>
+                  </Flex>
+                </PopoverBody>
+              </PopoverContent>
+            </Popover>
+          ) : null}
         </Flex>
         <Box gap="2rem" w="55rem">
           <Text fontSize="1.6rem">{content}</Text>
@@ -175,7 +177,6 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
               }
               fontSize="1.8rem"
               bg="none"
-              // color="white"
               borderRadius="50%"
               _hover={{
                 bgColor: "gray.200",
