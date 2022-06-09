@@ -16,11 +16,37 @@ import {
   Input,
   InputGroup,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import { AiFillCamera } from "react-icons/ai";
 import { useSelector } from "react-redux";
 const ProfileModel = ({ isOpen, onOpen, onClose }) => {
   const { user } = useSelector((store) => store.auth);
-  const { profile, firstName, lastName, bio } = user;
+
+  const [userData, setUserData] = useState({ ...user });
+  const { firstName, lastName, profile, bio, link } = userData;
+
+  const imgChangeHandler = (e) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setUserData((data) => ({ ...data, profile: reader.result }));
+      }
+    };
+  };
+
+  const profileSaveHandler = () => {
+    onClose();
+    dispatch(editProfile({ userData, token }));
+  };
+
+  const websiteChangeHadler = (e) => {
+    setUserData({ ...userData, link: e.target.value });
+  };
+
+  const bioChangeHandler = (e) => {
+    setUserData({ ...userData, bio: e.target.value });
+  };
 
   return (
     <Modal onClose={onClose} isOpen={isOpen} onOpen={onOpen}>
@@ -40,7 +66,12 @@ const ProfileModel = ({ isOpen, onOpen, onClose }) => {
                 bgColor="white"
                 padding="0.1rem"
               >
-                <Input type="file" visibility="hidden" position="absolute" />
+                <Input
+                  type="file"
+                  visibility="hidden"
+                  position="absolute"
+                  onChange={imgChangeHandler}
+                />
                 <AiFillCamera fontSize="2rem" color="gray" />
               </FormLabel>
             </Box>
@@ -61,6 +92,8 @@ const ProfileModel = ({ isOpen, onOpen, onClose }) => {
                 size="lg"
                 resize="none"
                 w="42rem"
+                value={bio}
+                onChange={bioChangeHandler}
               />
               <FormLabel fontSize="2xl" htmlFor="website">
                 Website
@@ -72,13 +105,14 @@ const ProfileModel = ({ isOpen, onOpen, onClose }) => {
                 fontSize="1.5rem"
                 size="lg"
                 w="42rem"
+                value={link}
+                onChange={websiteChangeHadler}
               />
             </Flex>
           </InputGroup>
         </ModalBody>
         <ModalFooter>
           <Button
-            onClick={onClose}
             fontSize="2xl"
             variant="ghost"
             bg="#288cfb"
@@ -96,6 +130,7 @@ const ProfileModel = ({ isOpen, onOpen, onClose }) => {
             _active={{
               bgColor: "blue.600",
             }}
+            onClick={profileSaveHandler}
           >
             save
           </Button>

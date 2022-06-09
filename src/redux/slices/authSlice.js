@@ -4,6 +4,7 @@ import {
   signup,
   addBookmark,
   removeBookmark,
+  editProfile
 } from './../asyncThunks/index'
 
 const initialState = {
@@ -49,6 +50,12 @@ const authSlice = createSlice({
       state.bookmarks = action.payload.data.bookmarks
     },
     [removeBookmark.rejected]: (action) => {
+      console.log(action)
+    },
+    [editProfile.fulfilled]: (state,action) => {
+      state.user = action.payload.data.user
+    },
+    [editProfile.rejected]: (action) => {
       console.log(action)
     },
   },

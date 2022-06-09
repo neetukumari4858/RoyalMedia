@@ -92,7 +92,7 @@ const ProfileCard = () => {
         </Text>
         <Link
           fontSize="1.5rem"
-          href="https://adarshbalika.netlify.app/"
+          href="https://candid-paletas-8107fc.netlify.app/index.html"
           isExternal
           color="blue.500"
         >

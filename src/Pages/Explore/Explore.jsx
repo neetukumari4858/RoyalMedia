@@ -5,6 +5,10 @@ import { useDisclosure } from "@chakra-ui/hooks";
 import { UserCard, Sidebar, PostCard,Post  } from "./../../Components/index";
 import { useDispatch, useSelector } from "react-redux";
 import { getPost } from "../../redux/asyncThunks/index"
+import {
+  trendingPostHandler,
+  latestPostHandler,
+} from "./../../redux/slices/postSlice";
 
 function Explore() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -13,7 +17,16 @@ function Explore() {
   const [userEditPost,setUserEditPost] = useState(null)
   useEffect(() => {
       dispatch(getPost());
-  }, [dispatch, posts]);
+  }, []);
+
+
+  const trendingHandler = () => {
+    dispatch(trendingPostHandler())
+  }
+
+  const sortPostChange = () => {
+    dispatch(latestPostHandler())
+  }
   return (
     <>
       <Post isOpen={isOpen} onClose={onClose} userEditPost={userEditPost}
@@ -46,6 +59,7 @@ function Explore() {
               _active={{
                 bgColor: "blue.600",
               }}
+              onClick={trendingHandler}
             >
               Tranding
             </Button>
@@ -66,6 +80,7 @@ function Explore() {
               _active={{
                 bgColor: "blue.600",
               }}
+              onClick={sortPostChange}
             >
               Latest
             </Button>

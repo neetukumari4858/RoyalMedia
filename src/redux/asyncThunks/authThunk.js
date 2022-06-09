@@ -68,4 +68,21 @@ const removeBookmark = createAsyncThunk(
   },
 )
 
-export { login, signup, addBookmark, removeBookmark }
+const editProfile = createAsyncThunk(
+  'user/editProfile',
+  async ({ userData, token }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        '/api/users/edit',
+        { userData },
+        { headers: { authorization: token } },
+      )
+      const data = { data: response.data }
+      return data
+    } catch (error) {
+      return rejectWithValue({ data: error.response.data })
+    }
+  },
+)
+
+export { login, signup, addBookmark, removeBookmark,editProfile }

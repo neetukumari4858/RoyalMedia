@@ -29,7 +29,7 @@ export const posts = [
         firstName: 'Charles',
         lastName: 'Dr',
         username: 'Charles',
-        createdAt: 2018,
+        createdAt: 2026,
         updatedAt: formatDate(),
         profile:
           'https://images.pexels.com/photos/1619697/pexels-photo-1619697.jpeg?cs=srgb&dl=pexels-victoria-borodinova-1619697.jpg&fm=jpg',
@@ -79,7 +79,7 @@ export const posts = [
     content:
       'Life has got all those twists and turns. You’ve got to hold on tight and off you go.',
     likes: {
-      likeCount: 2,
+      likeCount: 19,
       likedBy: [],
       dislikedBy: [],
     },
@@ -112,7 +112,7 @@ export const posts = [
     content:
       'Do not allow people to dim your shine because they are blinded. Tell them to put some sunglasses on',
     likes: {
-      likeCount: 2,
+      likeCount: 12,
       likedBy: [],
       dislikedBy: [],
     },
@@ -131,7 +131,7 @@ export const posts = [
         firstName: 'Charles',
         lastName: 'Dr',
         username: 'Charles',
-        createdAt: 2018,
+        createdAt: 2019,
         updatedAt: formatDate(),
         profile:
           'https://images.pexels.com/photos/1619697/pexels-photo-1619697.jpeg?cs=srgb&dl=pexels-victoria-borodinova-1619697.jpg&fm=jpg',
@@ -149,14 +149,14 @@ export const posts = [
     content:
       'Not having the best situation, but seeing the best in your situation is the key to happiness.',
     likes: {
-      likeCount: 2,
+      likeCount: 25,
       likedBy: [],
       dislikedBy: [],
     },
     firstName: 'John',
     lastName: 'Devin',
     username: 'John',
-    createdAt: 2018,
+    createdAt: 2025,
     updatedAt: formatDate(),
     profile:
       'https://thumbs.dreamstime.com/z/cute-young-boy-smiling-21381704.jpg',
