@@ -40,6 +40,7 @@ export const posts = [
     ],
   },
 
+
   {
     _id: uuid(),
     content:
@@ -73,11 +74,12 @@ export const posts = [
       },
     ],
   },
+  
 
   {
     _id: uuid(),
     content:
-      'Life has got all those twists and turns. You’ve got to hold on tight and off you go.',
+      'Life has got all those twists and turns. You hava got to hold on tight and off you go.',
     likes: {
       likeCount: 19,
       likedBy: [],
@@ -117,7 +119,7 @@ export const posts = [
       dislikedBy: [],
     },
     firstName: 'Jopesh',
-    lastName: 'Thomas',
+    lastName: 'Dim',
     username: 'Jopesh',
     createdAt: 2018,
     updatedAt: formatDate(),
@@ -149,7 +151,7 @@ export const posts = [
     content:
       'Not having the best situation, but seeing the best in your situation is the key to happiness.',
     likes: {
-      likeCount: 25,
+      likeCount: 5,
       likedBy: [],
       dislikedBy: [],
     },
@@ -166,15 +168,50 @@ export const posts = [
       {
         _id: uuid(),
         firstName: 'Jopesh',
-        lastName: 'Thomas',
+        lastName: 'Dim',
         username: 'Jopesh',
-        createdAt: 2018,
+        createdAt: 2027,
         updatedAt: formatDate(),
         profile:
           'https://www.kindpng.com/picc/m/168-1684606_circle-headshot-girl-hd-png-download.png',
         commentData:
           'The bad news is time flies. The good news is you’re the pilot.',
         createdAt: 2018,
+        updatedAt: formatDate(),
+      },
+    ],
+  },
+  {
+    _id: uuid(),
+    content:
+      'Not having the best situation, but seeing the best in your situation is the key to happiness.',
+    likes: {
+      likeCount: 2,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName: 'Anurag',
+    lastName: 'Jain',
+    username: 'Anurag',
+    createdAt: 2027,
+    updatedAt: formatDate(),
+    profile:
+      'https://media.istockphoto.com/photos/portrait-of-a-happy-latin-american-boy-smiling-picture-id1271410473?k=20&m=1271410473&s=170667a&w=0&h=Y-w3AL1AeAGyqC-D4gDDhUVRTyouBx3useTA_FYU5wA=',
+    commentData:
+      'The bad news is time flies. The good news is you’re the pilot.',
+    comments: [
+      {
+        _id: uuid(),
+        firstName: 'John',
+        lastName: 'Devin',
+        username: 'John',
+        createdAt: 2018,
+        updatedAt: formatDate(),
+        profile:
+          'https://thumbs.dreamstime.com/z/cute-young-boy-smiling-21381704.jpg',
+        commentData:
+          'The bad news is time flies. The good news is you’re the pilot.',
+        createdAt: 2022,
         updatedAt: formatDate(),
       },
     ],

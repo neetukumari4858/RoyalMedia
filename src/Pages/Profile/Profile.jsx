@@ -38,7 +38,7 @@ function Profile() {
       <Flex
         bgColor="#1A202C"
         color="white"
-        h="100%"
+        h="150rem"
         w="100%"
         justifyContent="space-evenly"
       >
@@ -56,23 +56,10 @@ function Profile() {
             );
           })}
         </Box>
-        {/* <Flex
-          bgColor="#2D3748"
-          padding="1.5rem"
-          gap="1rem"
-          flexDirection="column"
-          borderRadius="1rem"
-          position="sticky"
-          top="2rem"
-          h="40rem"
-          bottom="0"
-        >
-          <Heading as="h4" size="xl" w="30rem" borderBottom="1px">
-            Who to follow
-          </Heading> */}
+     
         <Suggestion />
       </Flex>
-      {/* </Flex> */}
+
     </>
   );
 }

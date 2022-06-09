@@ -1,10 +1,9 @@
 import { Avatar, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { BiPlus } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { followUser, unfollowUser } from "./../redux/asyncThunks/index"
+import { followUser, unfollowUser } from "./../redux/asyncThunks/index";
 
 const UserCard = ({ userData }) => {
-
   const dispatch = useDispatch();
 
   const { user, token } = useSelector((state) => state.auth);
@@ -17,8 +16,9 @@ const UserCard = ({ userData }) => {
   const unfollowUserHandler = () => {
     dispatch(unfollowUser({ _id, token }));
   };
+
   const isFollowing = userData.followers.some(
-    (eachUser) => eachUser._id === user._id
+    (eachuser) => eachuser.username === user.username
   );
   return (
     <>
@@ -32,7 +32,6 @@ const UserCard = ({ userData }) => {
         gap={3}
         box-sizing=" border-box"
         key={_id}
-        // border="1px solid red "
       >
         <Avatar size="lg" ml="2rem" value="avatar" src={profile} />
         <Flex flexDirection="column" justifyContent="center" ml="1rem">
@@ -42,33 +41,7 @@ const UserCard = ({ userData }) => {
           <Text>{`@${username}`}</Text>
         </Flex>
 
-        {isFollowing ? (
-          <Button
-            leftIcon={<BiPlus color="blue.200" fontSize="2rem" />}
-            fontSize="2xl"
-            variant="ghost"
-            bg="#288cfb"
-            color="white"
-            size="lg"
-            h="3.8rem"
-            // w="10rem"
-            box-sizing=" border-box"
-            borderRadius="1rem"
-            _hover={{
-              bgColor: "blue.500",
-            }}
-            _focus={{
-              bgColor: "none",
-            }}
-            _active={{
-              bgColor: "blue.600",
-            }}
-            onClick={unfollowUserHandler}
-          >
-            {" "}
-            Following
-          </Button>
-        ) : (
+        {!isFollowing ? (
           <Button
             leftIcon={<BiPlus color="blue.200" fontSize="2rem" />}
             fontSize="2xl"
@@ -90,7 +63,32 @@ const UserCard = ({ userData }) => {
             }}
             onClick={followUserHandler}
           >
+            {" "}
             Follow
+          </Button>
+        ) : (
+          <Button
+            leftIcon={<BiPlus color="blue.200" fontSize="2rem" />}
+            fontSize="2xl"
+            variant="ghost"
+            bg="#288cfb"
+            color="white"
+            size="lg"
+            h="3.8rem"
+            box-sizing=" border-box"
+            borderRadius="1rem"
+            _hover={{
+              bgColor: "blue.500",
+            }}
+            _focus={{
+              bgColor: "none",
+            }}
+            _active={{
+              bgColor: "blue.600",
+            }}
+            onClick={unfollowUserHandler}
+          >
+            Following
           </Button>
         )}
       </Flex>

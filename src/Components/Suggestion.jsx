@@ -6,8 +6,10 @@ const Suggestion = () => {
   const { users } = useSelector((state) => state.user);
   const { user } = useSelector((state) => state.auth);
 
-  const otherUsers = users?.filter((existUser) => existUser._id !== user?._id);
-  // console.log(otherUsers, "jsdk");
+  const otherUsers = users?.filter(
+    (eachUser) => eachUser?.username !== user?.username
+  );
+
   return (
     <>
       <Flex
@@ -26,7 +28,6 @@ const Suggestion = () => {
         </Heading>
 
         {otherUsers?.map((userData) => {
-          // {console.log(userData,"userDta");}
           return <UserCard key={userData._id} userData={userData} />;
         })}
       </Flex>

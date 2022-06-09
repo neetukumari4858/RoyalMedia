@@ -9,14 +9,29 @@ import { getPost, getAllUser } from "../../redux/asyncThunks/index";
 function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
-  const { posts ,status} = useSelector((state) => state.post);
+  const { posts, status } = useSelector((state) => state.post);
+  const { users } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.auth);
   const [userEditPost, setUserEditPost] = useState(null);
 
   useEffect(() => {
-    if (status === 'idle') {
-    dispatch(getPost());
-    dispatch(getAllUser());}
-  }, [dispatch,status, posts]);
+    if (status === "idle") {
+      dispatch(getPost());
+      dispatch(getAllUser());
+    }
+  }, [dispatch, status, posts]);
+
+  const followUsers = users.filter((userFollower) =>
+    userFollower.followers?.some(
+      (follower) => follower.username === user.username
+    )
+  );
+
+  const allpost = posts.filter(
+    (post) =>
+      post.username === user.username ||
+      followUsers?.some((followuser) => followuser.username === post.username)
+  );
 
   return (
     <>
@@ -30,7 +45,7 @@ function Home() {
         bgColor="#1A202C"
         gap="1rem"
         color={"white"}
-        h="100%"
+        h="150rem"
         w="100%"
         justifyContent="space-evenly"
       >
@@ -67,8 +82,8 @@ function Home() {
               Write something interesting...
             </Text>
           </Text>
-          {posts?.length > 0 ? (
-            posts.map((post) => {
+          {allpost?.length ? (
+            [...allpost].reverse().map((post) => {
               return (
                 <PostCard
                   onOpen={onOpen}
@@ -79,25 +94,11 @@ function Home() {
               );
             })
           ) : (
-            <Heading color="gray.600">Nothing to Home</Heading>
+            <Heading color="gray.600">
+              Follow some user to see there feed
+            </Heading>
           )}
         </Box>
-        {/* <Flex
-          bgColor="#2D3748"
-          padding="1.5rem"
-          gap="1rem"
-          flexDirection="column"
-          borderRadius="1rem"
-          position="sticky"
-          top="2rem"
-          h="40rem"
-          bottom="0"
-        >
-          <Heading as="h4" size="xl" w="30rem" borderBottom="1px">
-            Who to follow
-          </Heading>
-          <Suggestion/>
-        </Flex> */}
         <Suggestion />
       </Flex>
     </>

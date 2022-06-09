@@ -1,10 +1,10 @@
 import React from "react";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { Flex, Heading, Button, Box } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
-import { Suggestion, Sidebar, PostCard,Post  } from "./../../Components/index";
+import { Suggestion, Sidebar, PostCard, Post } from "./../../Components/index";
 import { useDispatch, useSelector } from "react-redux";
-import { getPost,getAllUser } from "../../redux/asyncThunks/index"
+import { getPost, getAllUser } from "../../redux/asyncThunks/index";
 import {
   trendingPostHandler,
   latestPostHandler,
@@ -14,24 +14,27 @@ function Explore() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const { posts } = useSelector((state) => state.post);
-  const [userEditPost,setUserEditPost] = useState(null)
+  const [userEditPost, setUserEditPost] = useState(null);
   useEffect(() => {
-      dispatch(getPost());
-      dispatch(getAllUser())
+    dispatch(getPost());
+    dispatch(getAllUser());
   }, []);
 
-
   const trendingHandler = () => {
-    dispatch(trendingPostHandler())
-  }
+    dispatch(trendingPostHandler());
+  };
 
   const sortPostChange = () => {
-    dispatch(latestPostHandler())
-  }
+    dispatch(latestPostHandler());
+  };
   return (
     <>
-      <Post isOpen={isOpen} onClose={onClose} userEditPost={userEditPost}
-        setUserEditPost={setUserEditPost} />
+      <Post
+        isOpen={isOpen}
+        onClose={onClose}
+        userEditPost={userEditPost}
+        setUserEditPost={setUserEditPost}
+      />
       <Flex
         bgColor="#1A202C"
         color="white"
@@ -88,28 +91,20 @@ function Explore() {
           </Flex>
           {posts?.length > 0 ? (
             posts.map((post) => {
-              return <PostCard key={post.id} post={post} setUserEditPost={setUserEditPost}  onOpen={onOpen}/>;
+              return (
+                <PostCard
+                  key={post.id}
+                  post={post}
+                  setUserEditPost={setUserEditPost}
+                  onOpen={onOpen}
+                />
+              );
             })
           ) : (
             <Heading color="gray.600">Nothing to Explore</Heading>
           )}
         </Box>
-        {/* <Flex
-          bgColor="#2D3748"
-          padding="1.5rem"
-          gap="1rem"
-          flexDirection="column"
-          borderRadius="1rem"
-          position="sticky"
-          top="2rem"
-          h="40rem"
-          bottom="0"
-        >
-          <Heading as="h4" size="xl" w="30rem" borderBottom="1px">
-            Who to follow
-          </Heading> */}
-          <Suggestion />
-        {/* </Flex> */}
+        <Suggestion />
       </Flex>
     </>
   );
