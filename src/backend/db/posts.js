@@ -152,6 +152,7 @@ export const posts = [
       'Not having the best situation, but seeing the best in your situation is the key to happiness.',
     likes: {
       likeCount: 5,
+
       likedBy: [],
       dislikedBy: [],
     },

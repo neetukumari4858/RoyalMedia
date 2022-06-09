@@ -4,7 +4,9 @@ import { Flex, Heading, Button, Box } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Suggestion, Sidebar, PostCard, Post } from "./../../Components/index";
 import { useDispatch, useSelector } from "react-redux";
+
 import { getPost, getAllUser } from "../../redux/asyncThunks/index";
+
 import {
   trendingPostHandler,
   latestPostHandler,
@@ -16,6 +18,7 @@ function Explore() {
   const { posts } = useSelector((state) => state.post);
   const [userEditPost, setUserEditPost] = useState(null);
   useEffect(() => {
+
     dispatch(getPost());
     dispatch(getAllUser());
   }, []);
@@ -27,6 +30,7 @@ function Explore() {
   const sortPostChange = () => {
     dispatch(latestPostHandler());
   };
+
   return (
     <>
       <Post

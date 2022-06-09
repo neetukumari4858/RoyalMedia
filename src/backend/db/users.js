@@ -34,10 +34,12 @@ export const users = [
   },
   {
     _id: uuid(),
+
     firstName: 'Anurag',
     lastName: 'Jain  ',
     username: 'Anurag',
     password: 'Anurag123',
+
     bio: 'I am fresher in web Developement',
     link: 'https://candid-paletas-8107fc.netlify.app/index.html',
     profile:
@@ -51,6 +53,7 @@ export const users = [
     lastName: 'Dim',
     username: 'Jopesh',
     password: 'Jopesh123',
+
     bio: 'I am fresher in web Developement',
     link: 'https://candid-paletas-8107fc.netlify.app/index.html',
     profile:
