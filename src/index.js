@@ -6,7 +6,7 @@ import { makeServer } from './server'
 import { BrowserRouter } from 'react-router-dom'
 import { ChakraProvider } from '@chakra-ui/react'
 import { Provider } from 'react-redux'
-import {store} from "./redux/app/store"
+import {store} from "./redux/app/store";
 
 // import {BrowserRouter as Routers} from "./"
 
