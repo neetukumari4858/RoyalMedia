@@ -18,7 +18,6 @@ function Explore() {
   const { posts } = useSelector((state) => state.post);
   const [userEditPost, setUserEditPost] = useState(null);
   useEffect(() => {
-
     dispatch(getPost());
     dispatch(getAllUser());
   }, []);
@@ -93,8 +92,8 @@ function Explore() {
               Latest
             </Button>
           </Flex>
-          {posts?.length > 0 ? (
-            posts.map((post) => {
+          {posts?.length ? (
+            [...posts].reverse().map((post) => {
               return (
                 <PostCard
                   key={post.id}

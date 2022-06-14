@@ -55,7 +55,7 @@ const Post = ({ isOpen, onClose,userEditPost  }) => {
             <Textarea
               size="xl"
               fontSize="1.5rem"
-              placeholder="Write something interesting..."
+              placeholder="  Write something interesting..."
               resize="none"
               value={postData}
               onChange={(e)=>setpostdata(e.target.value)}

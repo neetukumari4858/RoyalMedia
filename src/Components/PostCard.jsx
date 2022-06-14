@@ -51,7 +51,7 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
     createdAt,
   } = post;
 
-  console.log(comments,"comments");
+
   const isLike = post?.likes.likedBy?.find((likedUser) => likedUser);
 
   const isbookmark = bookmarks.some(
@@ -112,13 +112,11 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
       >
         <Flex justifyContent="space-between" w="55rem">
           <Flex gap="1rem" w="50rem">
-            {/* <Avatar name="avatar" size="xl" src={profile} /> */}
             <Avatar
               name="avatar"
               size="xl"
               src={user.username === username ? user.profile : profile}
             />
-
             <Heading>
               {`${firstName} ${lastName}`}
               <Text fontSize="xl" color="gray.500">
@@ -214,7 +212,7 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
           </Flex>
         </Box>
         <Flex gap="1rem" w="55rem">
-          <Avatar name="avatar" size="md" src={profile} />
+          <Avatar name="avatar" size="md" src={user.username === username ? user.profile : profile} />
           <InputGroup>
             <Input
               borderColor="gray.400"
@@ -258,7 +256,7 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
                     w="55rem"
                     key={_id}
                   >
-                    <Avatar name="avatar" size="md" src={profile} />
+                    <Avatar name="avatar" size="md" src={user.username === username ? user.profile : profile} />
                     <Flex
                       justifyContent="space-between"
                       w="100%"
