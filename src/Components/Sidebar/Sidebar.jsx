@@ -8,7 +8,7 @@ const Sidebar = ({ onOpen }) => {
   return (
     <div className="sidebar-container">
       <div className="sidebar">
-     
+      
        <div className="nav-section">
         <label className="logo">Royalmedia</label>
       </div>

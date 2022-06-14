@@ -77,7 +77,7 @@ function Home() {
               _active={{
                 bgColor: "transparent",
               }}
-            />
+            ></Button>
             <Text color="gray.400" ml={20} mt={-9} fontSize="1.3rem">
               Write something interesting...
             </Text>

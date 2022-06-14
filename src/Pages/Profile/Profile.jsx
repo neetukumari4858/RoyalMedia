@@ -45,7 +45,7 @@ function Profile() {
         <Sidebar onOpen={onOpen} />
         <Box flexDirection="column" mt="3rem" w="60rem" bgColor="#1A202C">
           <ProfileCard />
-          {userPost.map((post) => {
+          {[...userPost].reverse().map((post) => {
             return (
               <PostCard
                 setUserEditPost={setUserEditPost}

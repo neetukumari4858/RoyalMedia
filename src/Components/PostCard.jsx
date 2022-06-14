@@ -37,7 +37,7 @@ import { useState } from "react";
 
 const PostCard = ({ post, onOpen, setUserEditPost }) => {
   const dispatch = useDispatch();
-  const { user,token, bookmarks } = useSelector((state) => state.auth);
+  const { user, token, bookmarks } = useSelector((state) => state.auth);
   const [commentData, setCommentData] = useState("");
   const {
     _id,
@@ -110,7 +110,13 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
       >
         <Flex justifyContent="space-between" w="55rem">
           <Flex gap="1rem" w="50rem">
-            <Avatar name="avatar" size="xl" src={profile} />
+            {/* <Avatar name="avatar" size="xl" src={profile} /> */}
+            <Avatar
+              name="avatar"
+              size="xl"
+              src={user.username === username ? user.profile : profile}
+            />
+
             <Heading>
               {`${firstName} ${lastName}`}
               <Text fontSize="xl" color="gray.500">
@@ -263,7 +269,8 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
                         <Text fontSize="md">{`${createdAt}`}</Text>
                         <Text>{commentData}</Text>
                       </Flex>
-                      <Popover>
+                      {user.username === username ? (
+                        <Popover>
                         <PopoverTrigger>
                           <IconButton
                             icon={<BsThreeDotsVertical />}
@@ -295,6 +302,8 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
                           </PopoverBody>
                         </PopoverContent>
                       </Popover>
+                      ):null}
+                      
                     </Flex>
                   </Flex>
                 );

@@ -31,13 +31,14 @@ const ProfileModel = ({ isOpen, onOpen, onClose }) => {
     reader.onload = () => {
       if (reader.readyState === 2) {
         setUserData((data) => ({ ...data, profile: reader.result }));
+
       }
     };
   };
 
   const profileSaveHandler = () => {
     onClose();
-    dispatch(editProfile({ userData, token }));
+    dispatch(editProfile({ userData, token })); 
   };
 
   const websiteChangeHadler = (e) => {
@@ -68,6 +69,7 @@ const ProfileModel = ({ isOpen, onOpen, onClose }) => {
               >
                 <Input
                   type="file"
+                  accept="image/*"
                   visibility="hidden"
                   position="absolute"
                   onChange={imgChangeHandler}
