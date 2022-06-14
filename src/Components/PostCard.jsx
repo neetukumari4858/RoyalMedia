@@ -50,6 +50,8 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
     content,
     createdAt,
   } = post;
+
+  console.log(comments,"comments");
   const isLike = post?.likes.likedBy?.find((likedUser) => likedUser);
 
   const isbookmark = bookmarks.some(
@@ -85,13 +87,13 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
   };
 
   const commentPostHandler = () => {
-    if (commentData !== "") {
+    if (3 !== "") {
       dispatch(commentPost({ _id, commentData, token }));
       setCommentData("");
     }
   };
   const deleteCommentHandler = (commentId) => {
-    dispatch(deleteComment({ postId: _id, commentId, token }));
+    dispatch(deleteComment({ _id: _id, commentId, token }));
   };
 
   return (
@@ -243,8 +245,8 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
             </InputRightElement>
           </InputGroup>
         </Flex>
-        {comments?.length > 0
-          ? comments.map(
+        {
+           comments?.map(
               ({ _id, commentData, firstName, lastName, profile }) => {
                 return (
                   <Flex
@@ -308,9 +310,8 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
                   </Flex>
                 );
               }
-            )
-          : null}
-      </Flex>
+             )}
+        </Flex>
     </>
   );
 };

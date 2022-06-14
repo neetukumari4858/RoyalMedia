@@ -110,20 +110,22 @@ const commentPost = createAsyncThunk(
         { commentData },
         { headers: { authorization: token } },
       )
+      console.log(response,"comment");
       const data = { data: response.data }
       return data
     } catch (error) {
-      return rejectWithValue({ data: error.response.data })
+      console.log(error,"error");
+      // return rejectWithValue({ data: error.response.data })
     }
   },
 )
 
 const deleteComment = createAsyncThunk(
   'posts/deleteComment',
-  async ({ postId, commentId, token }, { rejectWithValue }) => {
+  async ({ _id, commentId, token }, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `/api/comments/delete/${postId}/${commentId}`,
+        `/api/comments/delete/${_id}/${commentId}`,
         {},
         { headers: { authorization: token } },
       )

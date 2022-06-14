@@ -68,7 +68,7 @@ export const postSlice = createSlice({
       console.log(action)
     },
     [commentPost.fulfilled]: (state, action) => {
-      state.posts = action.payload.data.posts
+      state.posts = action?.payload?.data.posts
     },
     [commentPost.rejected]: (action) => {
       console.log(action)

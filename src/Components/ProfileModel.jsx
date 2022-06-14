@@ -18,9 +18,12 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { AiFillCamera } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { editProfile } from "./../redux/asyncThunks/index";
+
 const ProfileModel = ({ isOpen, onOpen, onClose }) => {
-  const { user } = useSelector((store) => store.auth);
+  const { user,token } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
 
   const [userData, setUserData] = useState({ ...user });
   const { firstName, lastName, profile, bio, link } = userData;
@@ -31,14 +34,13 @@ const ProfileModel = ({ isOpen, onOpen, onClose }) => {
     reader.onload = () => {
       if (reader.readyState === 2) {
         setUserData((data) => ({ ...data, profile: reader.result }));
-
       }
     };
   };
 
   const profileSaveHandler = () => {
     onClose();
-    dispatch(editProfile({ userData, token })); 
+    dispatch(editProfile({ userData, token }));
   };
 
   const websiteChangeHadler = (e) => {
@@ -72,6 +74,7 @@ const ProfileModel = ({ isOpen, onOpen, onClose }) => {
                   accept="image/*"
                   visibility="hidden"
                   position="absolute"
+                  name="image"
                   onChange={imgChangeHandler}
                 />
                 <AiFillCamera fontSize="2rem" color="gray" />
