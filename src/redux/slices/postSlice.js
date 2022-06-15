@@ -21,10 +21,10 @@ export const postSlice = createSlice({
   initialState,
   reducers: {
     trendingPostHandler:(state)=>{
-      state.posts.sort((a, b ) =>b.likes.likeCount - a.likes.likeCount)
+      state.posts.sort((a, b ) =>a.likes.likeCount - b.likes.likeCount)
      },
      latestPostHandler:(state)=>{
-       state.posts.sort((a,b)=>b.createdAt - a.createdAt)
+       state.posts.sort((a,b)=>a.createdAt - b.createdAt)
      }
   },
 
