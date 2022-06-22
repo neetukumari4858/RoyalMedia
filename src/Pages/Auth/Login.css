@@ -1,5 +1,5 @@
 .outer-Login-container {
-  height: 60rem;
+  height: 100vh;
   width: 100%;
   margin: -37 0 12rem;
   display: flex;
@@ -34,7 +34,8 @@
 .create-account {
   text-align: center;
   margin-top: 1rem;
-  color: var(--white-color);
+text-decoration:underline;
+  color: var();
 }
 .royal-heading-two {
   text-align: center;
@@ -79,7 +80,7 @@
   font-size: 1.7rem;
   position: relative;
   top: 2rem;
-  color: var(--white-color);
+  color: var(--text-color);
 }
 .login-grid {
   display: grid;
