@@ -1,7 +1,7 @@
 import "./SignUp.css";
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import {signup} from "../../redux/asyncThunks/index"
+import { signup } from "../../redux/asyncThunks/index";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
@@ -16,7 +16,7 @@ const SignUp = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    firstName: "",
+    username: "",
     lastName: "",
   });
   const signUpHandler = async () => {
@@ -24,7 +24,7 @@ const SignUp = () => {
       !newUser.email ||
       !newUser.password ||
       !newUser.confirmPassword ||
-      !newUser.firstName ||
+      !newUser.username ||
       !newUser.lastName
     ) {
       toast.error("Fill all the fields");
@@ -63,9 +63,9 @@ const SignUp = () => {
                 className="grid-item signup_user-input"
                 type="text"
                 placeholder="  First Name"
-                value={newUser.firstName}
+                value={newUser.username}
                 onChange={(e) =>
-                  setNewUser({ ...newUser, firstName: e.target.value })
+                  setNewUser({ ...newUser, username: e.target.value })
                 }
               />
             </label>
@@ -90,6 +90,7 @@ const SignUp = () => {
             placeholder="  neetu@gmail.com "
             value={newUser.email}
             onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+            required
           />
 
           <label className="lebel-text">Password</label>
@@ -102,24 +103,24 @@ const SignUp = () => {
               setNewUser({ ...newUser, password: e.target.value })
             }
           />
-             <div
-              className="passwordIcon"
-              onClick={() =>
-                inputType === "text"
-                  ? setinputType("password")
-                  : setinputType("text")
-              }
-            >
-              {inputType === "text" ? (
-                <p>
-                  <AiFillEye />
-                </p>
-              ) : (
-                <p>
-                  <AiFillEyeInvisible />
-                </p>
-              )}
-            </div>
+          <div
+            className="passwordIcon"
+            onClick={() =>
+              inputType === "text"
+                ? setinputType("password")
+                : setinputType("text")
+            }
+          >
+            {inputType === "text" ? (
+              <p>
+                <AiFillEye />
+              </p>
+            ) : (
+              <p>
+                <AiFillEyeInvisible />
+              </p>
+            )}
+          </div>
           <label className="lebel-text">Confirm Password</label>
           <input
             className="user-input spacing"

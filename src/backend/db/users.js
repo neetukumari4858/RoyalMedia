@@ -8,9 +8,9 @@ import { formatDate } from '../utils/authUtils'
 export const users = [
   {
     _id: uuid(),
-    firstName: 'Neetu',
-    lastName: 'Kumari',
     username: 'Neetu',
+    lastName: 'Kumari',
+    
     password: 'neetu123',
     bio: 'I am fresher in web Developement',
     link: 'https://candid-paletas-8107fc.netlify.app/index.html',
@@ -21,23 +21,23 @@ export const users = [
   },
   {
     _id: uuid(),
-    firstName: 'Elden',
-    lastName: 'Driss',
     username: 'Elden',
+    lastName: 'Driss',
+
     password: 'Elden123',
     bio: 'I am fresher in web Developement',
     link: 'https://candid-paletas-8107fc.netlify.app/index.html',
     profile:
-      'https://png.pngitem.com/pimgs/s/570-5706525_tiffanie-circle-headshot-2018-blond-hd-png-download.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiWVc-BF0qq6kvN-SSbczyvLIrl4vbdbnr5JwG6nNqDa0SjpGBAwdlvcSXm5t6nlx4mdQ&usqp=CAU',
     createdAt: 2022,
     updatedAt: formatDate(),
   },
   {
     _id: uuid(),
 
-    firstName: 'Anurag',
-    lastName: 'Jain  ',
     username: 'Anurag',
+    lastName: 'Jain  ',
+
     password: 'Anurag123',
 
     bio: 'I am fresher in web Developement',
@@ -49,9 +49,9 @@ export const users = [
   },
   {
     _id: uuid(),
-    firstName: 'Jopesh',
-    lastName: 'Dim',
     username: 'Jopesh',
+    lastName: 'Dim',
+
     password: 'Jopesh123',
 
     bio: 'I am fresher in web Developement',
@@ -63,9 +63,9 @@ export const users = [
   },
   {
     _id: uuid(),
-    firstName: 'John',
-    lastName: 'Devin',
     username: 'John',
+    lastName: 'Devin',
+
     password: 'John123',
     bio: 'I am fresher in web Developement',
     link: 'https://candid-paletas-8107fc.netlify.app/index.html',

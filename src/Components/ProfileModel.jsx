@@ -22,11 +22,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { editProfile } from "./../redux/asyncThunks/index";
 
 const ProfileModel = ({ isOpen, onOpen, onClose }) => {
-  const { user,token } = useSelector((store) => store.auth);
+  const { user, token } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
   const [userData, setUserData] = useState({ ...user });
-  const { firstName, lastName, profile, bio, link } = userData;
+  const { username, lastName, profile, bio, link } = userData;
 
   const imgChangeHandler = (e) => {
     let reader = new FileReader();
@@ -61,7 +61,7 @@ const ProfileModel = ({ isOpen, onOpen, onClose }) => {
         <ModalCloseButton />
         <ModalBody h="10rem">
           <Center position="relative">
-            <Avatar name="avatar" size="2xl" src={profile} />
+            <Avatar size="2xl" src={profile} />
             <Box position="absolute" bottom="-2" right="17rem">
               <FormLabel
                 cursor="pointer"
@@ -84,7 +84,7 @@ const ProfileModel = ({ isOpen, onOpen, onClose }) => {
           <InputGroup>
             <Flex flexDirection="column">
               <FormLabel fontSize="2xl" w="45rem" htmlFor="userName">
-                {`${firstName} ${lastName}`}
+                {`${username} ${lastName}`}
               </FormLabel>
 
               <FormLabel fontSize="2xl" htmlFor="bio">

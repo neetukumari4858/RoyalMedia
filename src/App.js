@@ -7,11 +7,12 @@ function App() {
     <>
     <ToastContainer
     position="top-right"
-    autoClose={200}
+    autoClose={5000}
     hideProgressBar={false}
     newestOnTop={false}
     closeOnClick
     rtl={false}
+    fontSize={2}
     pauseOnFocusLoss
     draggable
     pauseOnHover

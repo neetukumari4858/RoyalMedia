@@ -7,7 +7,7 @@ const UserCard = ({ userData }) => {
   const dispatch = useDispatch();
 
   const { user, token } = useSelector((state) => state.auth);
-  const { _id, firstName, lastName, username, profile } = userData;
+  const { _id,lastName, username, profile } = userData;
 
   const followUserHandler = () => {
     dispatch(followUser({ _id, token }));
@@ -36,7 +36,7 @@ const UserCard = ({ userData }) => {
         <Avatar size="lg" ml="2rem" value="avatar" src={profile} />
         <Flex flexDirection="column" justifyContent="center" ml="1rem">
           <Heading as="h3" fontSize="1.5rem">
-            {`${firstName} ${lastName}`}
+            {`${username} ${lastName}`}
           </Heading>
           <Text>{`@${username}`}</Text>
         </Flex>

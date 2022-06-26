@@ -13,19 +13,19 @@ const Sidebar = ({ onOpen }) => {
         <label className="logo">Royalmedia</label>
       </div>
         <Link className="sidebarItemsLink" to="/">
-          <i className="fa fa-home"></i>Home
+          <i className="fa fa-home sidebar__icon"></i>Home
         </Link>
         <Link className="sidebarItemsLink" to="/explorePage">
-          <i className="explore-icons"><MdExplore/></i>Explore
+          <i className="explore-icons sidebar__icon"><MdExplore/></i>Explore
         </Link>
         <Link className="sidebarItemsLink" to="/bookmarkPage">
-          <i className="fa">
+          <i className="fa sidebar__icon">
             <BsBookmarkFill />
           </i>
           Bookmark
         </Link>
         <Link className="sidebarItemsLink" to="/profilePage">
-          <i className="fa">
+          <i className="fa sidebar__icon">
             <CgProfile />
           </i>
           Profile

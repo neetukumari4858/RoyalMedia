@@ -21,19 +21,19 @@ const ProfileCard = () => {
   const dispatch = useDispatch();
 
   const { user, token } = useSelector((state) => state.auth);
-  const { users } = useSelector((state) => state.user)
-  const { firstName, lastName, username, bio, link, profile } = user;
-const {posts}=useSelector((state)=>state.post)
+  const { users } = useSelector((state) => state.user);
+  const { lastName, username, bio, link, profile } = user;
+  const { posts } = useSelector((state) => state.post);
   const logoutHandler = () => {
     dispatch(logoutUser());
     navigate("/");
     toast.success("Loggedout Successfully.");
   };
 
-  const existUser = users?.find((eachUser) => eachUser._id === user._id)
+  const existUser = users?.find((eachUser) => eachUser._id === user._id);
   const userPost = posts.filter(
-    (eachUser) => eachUser.username === user.username,
-  )
+    (eachUser) => eachUser.username === user.username
+  );
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
@@ -62,12 +62,11 @@ const {posts}=useSelector((state)=>state.post)
           align="center"
           mt="-3rem"
           src={profile}
-          name="avatar"
           boxSize="15rem"
         />
       </Flex>
       <Flex flexDirection="column" align="center">
-        <Heading>{token ? `${firstName} ${lastName}` : null}</Heading>
+        <Heading>{token ? `${username} ${lastName}` : null}</Heading>
         <Text fontSize="xl" fontWeight="bold">
           {token ? `@${username}` : null}
         </Text>

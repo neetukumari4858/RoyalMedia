@@ -31,6 +31,8 @@ const Login = () => {
         localStorage.setItem("token", token);
         navigate(location?.state?.from?.pathname || "/", { replace: true });
         toast.success("Login Successfull !");
+      }else{
+        toast.warn("user not found Need to signup first");
       }
     } else {
       toast.error("Fill all the fields");

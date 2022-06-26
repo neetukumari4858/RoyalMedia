@@ -68,7 +68,7 @@ function Explore() {
               }}
               onClick={trendingHandler}
             >
-              Tranding
+              Trending
             </Button>
             <Button
               fontSize="2xl"

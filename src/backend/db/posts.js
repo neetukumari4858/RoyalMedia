@@ -41,7 +41,7 @@ export const posts = [
     createdAt: 2019,
     updatedAt: formatDate(),
     profile:
-      'https://png.pngitem.com/pimgs/s/570-5706525_tiffanie-circle-headshot-2018-blond-hd-png-download.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiWVc-BF0qq6kvN-SSbczyvLIrl4vbdbnr5JwG6nNqDa0SjpGBAwdlvcSXm5t6nlx4mdQ&usqp=CAU',
     commentData: 'There is nothing impossible to they who will try.',
     comments: [
       {
