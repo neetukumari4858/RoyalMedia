@@ -47,10 +47,18 @@ function Home() {
         color={"white"}
         h="150rem"
         w="100%"
+        // border="1px solid red"
         justifyContent="space-evenly"
+        direction={["column", "column", "row", "row"]}
       >
         <Sidebar onOpen={onOpen} />
-        <Box flexDirection="column" w="60rem" h="100%" bgColor="#1A202C">
+        <Box
+          flexDirection="column"
+          w={{ base: "100%", md: "60rem" }}
+          h="100%"
+          bgColor="#1A202C"
+          border="1px solid green"
+        >
           <Heading mt="3rem">Home</Heading>
           <Text
             bg="#2D3748"

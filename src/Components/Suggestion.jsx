@@ -16,12 +16,19 @@ const Suggestion = () => {
         bgColor="#2D3748"
         padding="1.5rem"
         gap="1rem"
-        flexDirection="column"
         borderRadius="1rem"
-        position="sticky"
+        position={{ base: "static", md: "sticky" }}
         top="2rem"
-        h="40rem"
+        border="1px solid red"
         bottom="0"
+        height={{
+          base: "100%",
+          md: "50%",
+          xl: "25%",
+        }}
+        h={{ md: "40rem" }}
+        direction={{ base: "row", md: "column" }}
+        overflowX={{ base: "scroll", md: "hidden" }}
       >
         <Heading as="h4" size="xl" w="30rem" borderBottom="1px">
           Who to follow

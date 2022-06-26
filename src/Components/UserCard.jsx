@@ -32,6 +32,7 @@ const UserCard = ({ userData }) => {
         gap={3}
         box-sizing=" border-box"
         key={_id}
+        
       >
         <Avatar size="lg" ml="2rem" value="avatar" src={profile} />
         <Flex flexDirection="column" justifyContent="center" ml="1rem">

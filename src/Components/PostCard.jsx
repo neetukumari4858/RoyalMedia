@@ -99,15 +99,16 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
   return (
     <>
       <Flex
-        w="60rem"
+        // w="60rem"
+        w={{base:"100%" ,md:'60rem'}}
         mt={9}
         padding="2rem"
         bgColor="#2D3748"
         borderRadius="1rem"
         flexDirection="column"
         gap="1rem"
-        justifyContent={"center"}
-        align={"center"}
+        // justifyContent={"center"}
+        // align={"center"}
         key={_id}
       >
         <Flex justifyContent="space-between" w="55rem">
@@ -211,16 +212,18 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
             </Text>
           </Flex>
         </Box>
-        <Flex gap="1rem" w="55rem">
+        <Flex gap="1rem" yyw={{base:"100%",md:"55rem"}}>
           <Avatar name="avatar" size="md" src={user.username === username ? user.profile : profile} />
           <InputGroup>
             <Input
+
               borderColor="gray.400"
               placeholder="Write a comment"
               fontSize="1.5rem"
               size="lg"
               value={commentData}
               onChange={(e) => commentInputHandler(e)}
+             
             />
             <InputRightElement mr="2rem">
               <Button

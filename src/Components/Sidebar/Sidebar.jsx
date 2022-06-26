@@ -2,21 +2,24 @@ import "./Sidebar.css";
 import { BsBookmarkFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
-import {MdExplore}  from "react-icons/md";
+import { MdExplore } from "react-icons/md";
 
 const Sidebar = ({ onOpen }) => {
   return (
     <div className="sidebar-container">
       <div className="sidebar">
-      
-       <div className="nav-section">
-        <label className="logo">Royalmedia</label>
-      </div>
+        <div className="nav-section">
+          <label className="logo">Royalmedia</label>
+        </div>
+        <div className="hyperlink_div">
         <Link className="sidebarItemsLink" to="/">
           <i className="fa fa-home"></i>Home
         </Link>
         <Link className="sidebarItemsLink" to="/explorePage">
-          <i className="explore-icons"><MdExplore/></i>Explore
+          <i className="explore-icons">
+            <MdExplore />
+          </i>
+          Explore
         </Link>
         <Link className="sidebarItemsLink" to="/bookmarkPage">
           <i className="fa">
@@ -30,11 +33,12 @@ const Sidebar = ({ onOpen }) => {
           </i>
           Profile
         </Link>
-        <button className="create-Post-btn"  onClick={onOpen}>
+        </div>
+        <button className="create-Post-btn" onClick={onOpen}>
           Create New Post
         </button>
       </div>
     </div>
   );
 };
-export {Sidebar}
+export { Sidebar };
